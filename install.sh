@@ -6,19 +6,50 @@
 # You should also have root access of the new computer
 
 # List of software:
-# GNU Nano (apt)
 # Atom (apt)
-# Tilix (apt)
 # Brave Browser (apt)
-# Gnome Tweaks (apt)
 # Discord (apt)
+# GNU Nano (apt)
 # Steam (apt)
+# Tilix (apt)
+# Gnome Tweaks (apt)
 # Eclipse
 # Slack (get from the website)
 # Bitwarden (get from the website)
 # Zoom (get from the website)
 
 sudo apt update
+
+# Atom
+read -p 'Install Atom? (Y/n) ' installatom
+if [ $installatom == 'Y' ]
+then
+  echo 'Installing Atom...'
+  sudo apt install atom -y
+  python3 atom/install.py
+else
+  echo 'Skipping Atom install.'
+fi
+
+# Brave Browser
+read -p 'Install Brave Browser? (Y/n) ' installbrave
+if [ $installbrave == 'Y' ]
+then
+  echo 'Installing Brave Browser...'
+  sudo apt install brave-browser -y
+else
+  echo 'Skipping Brave Browser install.'
+fi
+
+# Discord
+read -p 'Install Discord? (Y/n) ' installdiscord
+if [ $installdiscord == 'Y' ]
+then
+  echo 'Installing Discord...'
+  sudo apt install discord -y
+else
+  echo 'Skipping Discord install.'
+fi
 
 # GNU Nano
 read -p 'Install GNU Nano? (Y/n) ' installnano
@@ -28,6 +59,16 @@ then
   sudo apt install nano -y
 else
   echo 'Skipping Nano install.'
+fi
+
+# Steam
+read -p 'Install Steam? (Y/n) ' installsteam
+if [ $installsteam == 'Y' ]
+then
+  echo 'Installing Steam...'
+  sudo apt install steam -y
+else
+  echo 'Skipping Steam install.'
 fi
 
 # Tilix
@@ -51,32 +92,10 @@ else
   echo 'Skipping GNOME Tweaks install.'
 fi
 
-# Brave Browser
-read -p 'Install Brave Browser? (Y/n) ' installbrave
-if [ $installbrave == 'Y' ]
-then
-  echo 'Installing Brave Browser...'
-  sudo apt install brave-browser -y
-else
-  echo 'Skipping Brave Browser install.'
-fi
+# symlink for bashrc
+rm ~/.bashrc
+ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
 
-# Discord
-read -p 'Install Discord? (Y/n) ' installdiscord
-if [ $installdiscord == 'Y' ]
-then
-  echo 'Installing Discord...'
-  sudo apt install discord -y
-else
-  echo 'Skipping Discord install.'
-fi
-
-# Steam
-read -p 'Install Steam? (Y/n) ' installsteam
-if [ $installsteam == 'Y' ]
-then
-  echo 'Installing Steam...'
-  sudo apt install steam -y
-else
-  echo 'Skipping Steam install.'
-fi
+# symlink for gitconfig
+rm ~/.gitconfig
+ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
