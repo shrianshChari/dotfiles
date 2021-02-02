@@ -13,12 +13,26 @@
 # Steam (apt)
 # Tilix (apt)
 # Gnome Tweaks (apt)
+# Neofetch (apt)
 # Eclipse
 # Slack (get from the website)
 # Bitwarden (get from the website)
 # Zoom (get from the website)
 
 sudo apt update
+
+echo "         __         _                  __    ________               _ "
+echo "   _____/ /_  _____(_)___ _____  _____/ /_  / ____/ /_  ____ ______(_)"
+echo "  / ___/ __ \/ ___/ / __ \`/ __ \/ ___/ __ \/ /   / __ \/ __ \`/ ___/ / "
+echo " (__  ) / / / /  / / /_/ / / / (__  ) / / / /___/ / / / /_/ / /  / /  "
+echo "/____/_/ /_/_/  /_/\__,_/_/ /_/____/_/ /_/\____/_/ /_/\__,_/_/  /_/   "
+
+echo "       __      __  _____ __         "
+echo "  ____/ /___  / /_/ __(_) /__  _____"
+echo " / __  / __ \/ __/ /_/ / / _ \/ ___/"
+echo "/ /_/ / /_/ / /_/ __/ / /  __(__  ) "
+echo "\__,_/\____/\__/_/ /_/_/\___/____/  "
+
 
 # Atom
 read -p 'Install Atom? (Y/n) ' installatom
@@ -61,6 +75,16 @@ else
   echo 'Skipping Nano install.'
 fi
 
+# Neofetch
+read -p 'Install Neofetch? (Y/n) ' installneofetch
+if [ $installneofetch == 'Y' ]
+then
+  echo 'Installing Neofetch...'
+  sudo apt install neofetch -y
+else
+  echo 'Skipping Neofetch install.'
+fi
+
 # Steam
 read -p 'Install Steam? (Y/n) ' installsteam
 if [ $installsteam == 'Y' ]
@@ -95,7 +119,9 @@ fi
 # symlink for bashrc
 rm ~/.bashrc
 ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
+echo "bashrc symlink complete!"
 
 # symlink for gitconfig
 rm ~/.gitconfig
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
+echo "gitconfig symlink complete!"
