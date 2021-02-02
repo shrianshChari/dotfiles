@@ -6,21 +6,75 @@
 # You should also have root access of the new computer
 
 # List of software:
-# Atom (apt)
-# Brave Browser (apt)
-# Discord (apt)
-# GNU Nano (apt)
-# Steam (apt)
-# Tilix (apt)
-# Gnome Tweaks (apt)
-# Neofetch (apt)
+# Atom (apt) ✔️
+# Brave Browser (apt) ✔️
+# Discord (apt) ✔️
+# GNU Nano (apt) ✔️
+# Steam (apt) ✔️
+# Tilix (apt) ✔️
+# Gnome Tweaks (apt) ✔️
+# Neofetch (apt) ✔️
+# NPM/NPX
 # Eclipse
 # Slack (get from the website)
 # Bitwarden (get from the website)
 # Zoom (get from the website)
 
+# Ripped this from the build.sh file from MangoHud
+# It's super handy, and I'm pretty sure it'll work
+test_distro() {
+  OS_RELEASE_FILES=("/etc/os-release" "/usr/lib/os-release")
+
+  # echo "${OS_RELEASE_FILES}"
+
+  for os_release in ${OS_RELEASE_FILES[@]} ; do
+      if [[ ! -e "${os_release}" ]]; then
+          continue
+      fi
+      DISTRO=$(sed -rn 's/^NAME=(.+)/\1/p' ${os_release} | sed 's/"//g')
+  done
+
+  # echo "${DISTRO}"
+
+  case $DISTRO in
+      "Arch Linux"|"Manjaro Linux")
+          MANAGER_QUERY="pacman -Q"
+          MANAGER_INSTALL="pacman -S"
+
+      ;;
+      "Fedora")
+          MANAGER_QUERY="dnf list installed"
+          MANAGER_INSTALL="dnf install"
+
+      ;;
+      *"buntu"|"Linux Mint"|"Debian GNU/Linux"|"Zorin OS"|"Pop!_OS"|"elementary OS"|"KDE neon")
+          MANAGER_QUERY="dpkg-query -s"
+          MANAGER_INSTALL="apt install"
+
+      ;;
+      "openSUSE Leap"|"openSUSE Tumbleweed")
+
+          PACKMAN_PKGS="libXNVCtrl-devel"
+          MANAGER_QUERY="rpm -q"
+          MANAGER_INSTALL="zypper install"
+
+      ;;
+      "Solus")
+          unset MANAGER_QUERY
+          unset DEPS
+          MANAGER_INSTALL="eopkg it"
+
+          ;;
+      *)
+          echo "# Unable to find distro information!"
+          echo "# Attempting to build regardless"
+  esac
+  # echo "${MANAGER_INSTALL}"
+}
+
 sudo apt update
 
+# Funny big text thanks to figlet
 echo "         __         _                  __    ________               _ "
 echo "   _____/ /_  _____(_)___ _____  _____/ /_  / ____/ /_  ____ ______(_)"
 echo "  / ___/ __ \/ ___/ / __ \`/ __ \/ ___/ __ \/ /   / __ \/ __ \`/ ___/ / "
@@ -33,13 +87,14 @@ echo " / __  / __ \/ __/ /_/ / / _ \/ ___/"
 echo "/ /_/ / /_/ / /_/ __/ / /  __(__  ) "
 echo "\__,_/\____/\__/_/ /_/_/\___/____/  "
 
+test_distro
 
 # Atom
 read -p 'Install Atom? (Y/n) ' installatom
 if [ $installatom == 'Y' ]
 then
   echo 'Installing Atom...'
-  sudo apt install atom -y
+  sudo ${MANAGER_INSTALL} atom -y
   python3 atom/install.py
 else
   echo 'Skipping Atom install.'
@@ -50,7 +105,7 @@ read -p 'Install Brave Browser? (Y/n) ' installbrave
 if [ $installbrave == 'Y' ]
 then
   echo 'Installing Brave Browser...'
-  sudo apt install brave-browser -y
+  sudo ${MANAGER_INSTALL} brave-browser -y
 else
   echo 'Skipping Brave Browser install.'
 fi
@@ -60,7 +115,7 @@ read -p 'Install Discord? (Y/n) ' installdiscord
 if [ $installdiscord == 'Y' ]
 then
   echo 'Installing Discord...'
-  sudo apt install discord -y
+  sudo ${MANAGER_INSTALL} discord -y
 else
   echo 'Skipping Discord install.'
 fi
@@ -70,7 +125,7 @@ read -p 'Install GNU Nano? (Y/n) ' installnano
 if [ $installnano == 'Y' ]
 then
   echo 'Installing Nano...'
-  sudo apt install nano -y
+  sudo ${MANAGER_INSTALL} nano -y
 else
   echo 'Skipping Nano install.'
 fi
@@ -80,7 +135,7 @@ read -p 'Install Neofetch? (Y/n) ' installneofetch
 if [ $installneofetch == 'Y' ]
 then
   echo 'Installing Neofetch...'
-  sudo apt install neofetch -y
+  sudo ${MANAGER_INSTALL} neofetch -y
 else
   echo 'Skipping Neofetch install.'
 fi
@@ -90,7 +145,7 @@ read -p 'Install Steam? (Y/n) ' installsteam
 if [ $installsteam == 'Y' ]
 then
   echo 'Installing Steam...'
-  sudo apt install steam -y
+  sudo ${MANAGER_INSTALL} steam -y
 else
   echo 'Skipping Steam install.'
 fi
@@ -100,7 +155,7 @@ read -p 'Install Tilix? (Y/n) ' installtilix
 if [ $installtilix == 'Y' ]
 then
   echo 'Installing Tilix...'
-  sudo apt install tilix -y
+  sudo ${MANAGER_INSTALL} tilix -y
   sudo update-alternatives --config x-terminal-emulator
 else
   echo 'Skipping Tilix install.'
@@ -111,7 +166,7 @@ read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 if [ $installtweaks == 'Y' ]
 then
   echo 'Installing GNOME Tweaks...'
-  sudo apt install gnome-tweaks -y
+  sudo ${MANAGER_INSTALL} gnome-tweaks -y
 else
   echo 'Skipping GNOME Tweaks install.'
 fi
