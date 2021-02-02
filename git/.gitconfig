@@ -1,0 +1,11 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = Shriansh Chari
+	email = 30420527+shrianshChari@users.noreply.github.com
+[user]
+[core]
+	editor = atom

@@ -1,0 +1,11 @@
+{
+  "package-list": [
+    "atom-discord",
+    "atom-file-icons",
+    "language-gitignore",
+    "minimap",
+    "pigments",
+    "teletype",
+    "terminal-tab"
+  ]
+}
