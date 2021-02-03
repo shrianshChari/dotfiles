@@ -40,30 +40,30 @@ test_distro() {
       "Arch Linux"|"Manjaro Linux")
           MANAGER_QUERY="pacman -Q"
           MANAGER_INSTALL="pacman -S"
-
+          UPDATE_PACKAGES="sudo pacman -Syy"
       ;;
       "Fedora")
           MANAGER_QUERY="dnf list installed"
           MANAGER_INSTALL="dnf install"
-
+          UPDATE_PACKAGES="sudo dnf upgrade"
       ;;
       *"buntu"|"Linux Mint"|"Debian GNU/Linux"|"Zorin OS"|"Pop!_OS"|"elementary OS"|"KDE neon")
           MANAGER_QUERY="dpkg-query -s"
           MANAGER_INSTALL="apt install"
-
+          UPDATE_PACKAGES="sudo apt update"
       ;;
       "openSUSE Leap"|"openSUSE Tumbleweed")
 
           PACKMAN_PKGS="libXNVCtrl-devel"
           MANAGER_QUERY="rpm -q"
           MANAGER_INSTALL="zypper install"
-
+          UPDATE_PACKAGES="sudo zypper ref"
       ;;
       "Solus")
           unset MANAGER_QUERY
           unset DEPS
           MANAGER_INSTALL="eopkg it"
-
+          UPDATE_PACKAGES="sudo eopkg upgrade"
           ;;
       *)
           echo "# Unable to find distro information!"
@@ -71,8 +71,6 @@ test_distro() {
   esac
   # echo "${MANAGER_INSTALL}"
 }
-
-sudo apt update
 
 # Funny big text thanks to figlet
 echo "         __         _                  __    ________               _ "
@@ -89,6 +87,16 @@ echo "\__,_/\____/\__/_/ /_/_/\___/____/  "
 
 test_distro
 
+# Updating distro packages
+# May not always work, since I'm not familiar with any
+read -p 'Update packages? (Y/n) ' updatepackages
+if [[ $updatepackages == 'Y' ]]; then
+  echo 'Updating packages...'
+  $UPDATE_PACKAGES
+else
+  echo 'Skipping updating packages...'
+fi
+
 # Atom
 read -p 'Install Atom? (Y/n) ' installatom
 if [ $installatom == 'Y' ]
@@ -96,6 +104,11 @@ then
   echo 'Installing Atom...'
   sudo ${MANAGER_INSTALL} atom -y
   python3 atom/install.py
+
+  # symlink for config.cson
+  rm ~/.atom/config.cson
+  ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+  echo "Atom config.cson symlink complete!"
 else
   echo 'Skipping Atom install.'
 fi
@@ -180,3 +193,16 @@ echo "bashrc symlink complete!"
 rm ~/.gitconfig
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
+
+if [ -e "~/.bash_profile" ];
+then
+  # symlink for bash_profile
+  rm ~/.bash_profile
+  ln -s ~/.dotfiles/bash/profile ~/.bash_profile
+  echo "bash_profile symlink complete!"
+else
+  # symlink for profile
+  rm ~/.profile
+  ln -s ~/.dotfiles/bash/profile ~/.profile
+  echo "profile symlink complete!"
+fi
