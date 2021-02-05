@@ -4,8 +4,6 @@
 
 ### To-do:
 - Configure installation of packages that come from websites
-- Update files with said other package
-managers
 
 ### Completed: ###
 - Scripts that install packages from apt - Installation of Atom packages
