@@ -6,6 +6,8 @@
     "minimap",
     "pigments",
     "teletype",
-    "terminal-tab"
+    "terminal-tab",
+    "compare-files",
+    "open-sesame"
   ]
 }

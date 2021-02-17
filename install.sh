@@ -14,63 +14,19 @@
 # Tilix (apt) ✔️
 # Gnome Tweaks (apt) ✔️
 # Neofetch (apt) ✔️
-# NPM/NPX
-# Eclipse
-# Slack (get from the website)
-# Bitwarden (get from the website)
-# Zoom (get from the website)
+# NPM/NPX ✔️
+# Eclipse ✔️
+# Zoom ✔️
+# Snap ✔️
+# Slack (through snap) ✔️
+# Bitwarden (through snap) ✔️
+# FromScratch (through snap) ✔️
 
 # Ripped this from the build.sh file from MangoHud
 # It's super handy, and I'm pretty sure it'll work
-test_distro() {
-  OS_RELEASE_FILES=("/etc/os-release" "/usr/lib/os-release")
 
-  # echo "${OS_RELEASE_FILES}"
-
-  for os_release in ${OS_RELEASE_FILES[@]} ; do
-      if [[ ! -e "${os_release}" ]]; then
-          continue
-      fi
-      DISTRO=$(sed -rn 's/^NAME=(.+)/\1/p' ${os_release} | sed 's/"//g')
-  done
-
-  # echo "${DISTRO}"
-
-  case $DISTRO in
-      "Arch Linux"|"Manjaro Linux")
-          MANAGER_QUERY="pacman -Q"
-          MANAGER_INSTALL="pacman -S"
-          UPDATE_PACKAGES="sudo pacman -Syy"
-      ;;
-      "Fedora")
-          MANAGER_QUERY="dnf list installed"
-          MANAGER_INSTALL="dnf install"
-          UPDATE_PACKAGES="sudo dnf upgrade"
-      ;;
-      *"buntu"|"Linux Mint"|"Debian GNU/Linux"|"Zorin OS"|"Pop!_OS"|"elementary OS"|"KDE neon")
-          MANAGER_QUERY="dpkg-query -s"
-          MANAGER_INSTALL="apt install"
-          UPDATE_PACKAGES="sudo apt update"
-      ;;
-      "openSUSE Leap"|"openSUSE Tumbleweed")
-
-          PACKMAN_PKGS="libXNVCtrl-devel"
-          MANAGER_QUERY="rpm -q"
-          MANAGER_INSTALL="zypper install"
-          UPDATE_PACKAGES="sudo zypper ref"
-      ;;
-      "Solus")
-          unset MANAGER_QUERY
-          unset DEPS
-          MANAGER_INSTALL="eopkg it"
-          UPDATE_PACKAGES="sudo eopkg upgrade"
-          ;;
-      *)
-          echo "# Unable to find distro information!"
-          echo "# Attempting to build regardless"
-  esac
-  # echo "${MANAGER_INSTALL}"
-}
+UPDATE_PACKAGES="sudo apt update"
+MANAGER_INSTALL="apt install"
 
 # Funny big text thanks to figlet
 echo "         __         _                  __    ________               _ "
@@ -182,6 +138,73 @@ then
   sudo ${MANAGER_INSTALL} gnome-tweaks -y
 else
   echo 'Skipping GNOME Tweaks install.'
+fi
+
+# NodeJS
+read -p 'Install Node.js? (Y/n) ' installnode
+if [ $installnode == 'Y' ]
+then
+  echo 'Installing Node.js...'
+  sudo ${MANAGER_INSTALL} nodejs -y
+else
+  echo 'Skipping Node.js install.'
+fi
+
+# Eclipse
+read -p 'Install Eclipse? (Y/n) ' installeclipse
+if [ $installeclipse == 'Y' ]
+then
+  echo 'Installing Eclipse...'
+  sudo ${MANAGER_INSTALL} eclipse -y
+else
+  echo 'Skipping Eclipse install.'
+fi
+
+# Zoom
+read -p 'Install Zoom? (Y/n) ' installzoom
+if [ $installzoom == 'Y' ]
+then
+  echo 'Installing Zoom...'
+  sudo ${MANAGER_INSTALL} zoom -y
+else
+  echo 'Skipping Zoom install.'
+fi
+
+# Snap
+read -p 'Install snap? (Y/n) ' installsnap
+if [ $installsnap ]; then
+  sudo $MANAGER_INSTALL snapd
+
+  # Slack
+  read -p 'Install Slack? (Y/n) ' installslack
+  if [ $installslack == 'Y' ]
+  then
+    echo 'Installing Slack...'
+    sudo snap install zoom -y
+  else
+    echo 'Skipping Slack install.'
+  fi
+
+  # Bitwarden
+  read -p 'Install Bitwarden? (Y/n) ' installbitwarden
+  if [ $installbitwarden == 'Y' ]
+  then
+    echo 'Installing Bitwarden...'
+    sudo snap install bitwarden -y
+  else
+    echo 'Skipping Bitwarden install.'
+  fi
+
+  # FromScratch
+  read -p 'Install FromScratch? (Y/n) ' installfromscratch
+  if [ $installfromscratch == 'Y' ]
+  then
+    echo 'Installing FromScratch...'
+    sudo snap install fromscratch -y
+  else
+    echo 'Skipping FromScratch install.'
+  fi
+
 fi
 
 # symlink for bashrc
