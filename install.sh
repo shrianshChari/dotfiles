@@ -18,6 +18,7 @@
 # Eclipse ✔️
 # Zoom ✔️
 # Snap ✔️
+# Neovim ✔️
 # Slack (through snap) ✔️
 # Bitwarden (through snap) ✔️
 # FromScratch (through snap) ✔️
@@ -107,6 +108,20 @@ then
   sudo ${MANAGER_INSTALL} neofetch -y
 else
   echo 'Skipping Neofetch install.'
+fi
+
+# Neovim
+read -p 'Install Neovim? (Y/n) ' installneovim
+if [[ $installneovim == 'Y' ]]; then
+  echo 'Installing Neovim...'
+  sudo ${MANAGER_INSTALL} neovim -y
+
+  # symlink for init.vim
+  mkdir ~/.config/nvim
+  ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+  echo "init.vim symlink created!"
+else
+  echo 'Skipping Neovim install...'
 fi
 
 # Steam
@@ -207,25 +222,44 @@ if [ $installsnap ]; then
 
 fi
 
-# symlink for bashrc
-rm ~/.bashrc
-ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
-echo "bashrc symlink complete!"
-
 # symlink for gitconfig
 rm ~/.gitconfig
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
 
-if [ -e "~/.bash_profile" ];
-then
-  # symlink for bash_profile
-  rm ~/.bash_profile
-  ln -s ~/.dotfiles/bash/profile ~/.bash_profile
-  echo "bash_profile symlink complete!"
+# installation of zsh, symlink for zsh/bash config files
+read -p 'Install zsh? (Y/n) ' installzsh
+if [[ $installzsh == 'Y' ]]; then
+  echo "Using zsh..."
+
+  # Installation of zsh
+  sudo ${MANAGER_INSTALL} zsh
+
+  # Installation of oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  # symlink for .zshrc
+  rm ~/.zshrc
+  ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+  echo "zshrc symlink complete!"
 else
-  # symlink for profile
-  rm ~/.profile
-  ln -s ~/.dotfiles/bash/profile ~/.profile
-  echo "profile symlink complete!"
+  echo "Using bash..."
+
+  # symlink for bashrc
+  rm ~/.bashrc
+  ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
+  echo "bashrc symlink complete!"
+
+  if [ -e "~/.bash_profile" ];
+  then
+    # symlink for bash_profile
+    rm ~/.bash_profile
+    ln -s ~/.dotfiles/bash/profile ~/.bash_profile
+    echo "bash_profile symlink complete!"
+  else
+    # symlink for profile
+    rm ~/.profile
+    ln -s ~/.dotfiles/bash/profile ~/.profile
+    echo "profile symlink complete!"
+  fi
 fi
