@@ -19,6 +19,7 @@
 # Zoom ✔️
 # Snap ✔️
 # Neovim ✔️
+# Zsh ✔️
 # Slack (through snap) ✔️
 # Bitwarden (through snap) ✔️
 # FromScratch (through snap) ✔️
@@ -238,17 +239,33 @@ if [[ $installzsh == 'Y' ]]; then
   # Installation of oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-  # symlink for .zshrc
-  rm ~/.zshrc
-  ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
-  echo "zshrc symlink complete!"
+  if [[ $installtilix == 'Y' ]]; then
+    # symlink for .zshrc
+    sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+    rm ~/.zshrc
+    ln -s ~/.dotfiles/zsh/zshrctilix ~/.zshrc
+    echo "zshrc symlink complete!"
+  else
+    # symlink for .zshrc
+    rm ~/.zshrc
+    ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+    echo "zshrc symlink complete!"
+  fi
 else
   echo "Using bash..."
 
-  # symlink for bashrc
-  rm ~/.bashrc
-  ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
-  echo "bashrc symlink complete!"
+  if [[ $installtilix ]]; then
+    # symlink for bashrc
+    sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+    rm ~/.bashrc
+    ln -s ~/.dotfiles/bash/bashrctilix ~/.bashrc
+    echo "bashrc symlink complete!"
+  else
+    # symlink for bashrc
+    rm ~/.bashrc
+    ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
+    echo "bashrc symlink complete!"
+  fi
 
   if [ -e "~/.bash_profile" ];
   then

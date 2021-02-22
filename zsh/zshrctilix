@@ -105,3 +105,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Simple way to suspend computer from command line
 alias suspend="systemctl suspend"
+
+# Fixing weird issue in Tilix
+# Delete this thing if Tilix is not installed
+# Execute `sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh` afterward
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte.sh
+fi
