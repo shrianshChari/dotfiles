@@ -20,3 +20,25 @@
 - Created symlinks for `bashrc`, `gitconfig`, and either `bash_profile` or `profile`
 - Stopped bothering with other package managers, focused only on `apt` and `snap`
 - Made updating packages optional
+
+### Additional housekeeping: ###
+- Make sure that you run `:PlugStatus` the first time you run Neovim after running this script
+
+### Installed Packages: ###
+- [Atom](https://atom.io) (apt)
+- [Brave Browser](htpps://brave.com) (apt)
+- [Discord](https://discord.com) (apt)
+- [Eclipse](https://eclipse.org) (apt)
+- ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
+- [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
+- [Neovim](https://neovim.io) and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
+- [NodeJS](https://nodejs.org/en/) (apt)
+- [Steam](https://store.steampowered.com) (apt)
+- [Tilix](https://gnunn1.github.io/tilix-web/) (apt)
+- [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks) (apt)
+- [Zoom](https://zoom.us) (apt)
+- [Zsh](http://zsh.sourceforge.net) and [Oh My Zsh](https://ohmyz.sh/ "Plugin manager for zsh") (apt)
+- [Snap](https://snapcraft.io) (apt)
+- [Bitwarden](https://bitwarden.com) (snap)
+- [FromScratch](https://fromscratch.rocks) (snap)
+- [Slack](https://slack.com) (snap)

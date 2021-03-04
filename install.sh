@@ -5,25 +5,6 @@
 
 # You should also have root access of the new computer
 
-# List of software:
-# Atom (apt) ✔️
-# Brave Browser (apt) ✔️
-# Discord (apt) ✔️
-# GNU Nano (apt) ✔️
-# Steam (apt) ✔️
-# Tilix (apt) ✔️
-# Gnome Tweaks (apt) ✔️
-# Neofetch (apt) ✔️
-# NPM/NPX ✔️
-# Eclipse ✔️
-# Zoom ✔️
-# Snap ✔️
-# Neovim ✔️
-# Zsh ✔️
-# Slack (through snap) ✔️
-# Bitwarden (through snap) ✔️
-# FromScratch (through snap) ✔️
-
 # Ripped this from the build.sh file from MangoHud
 # It's super handy, and I'm pretty sure it'll work
 
@@ -91,15 +72,25 @@ else
   echo 'Skipping Discord install.'
 fi
 
-# GNU Nano
-read -p 'Install GNU Nano? (Y/n) ' installnano
-if [ $installnano == 'Y' ]
+# Eclipse
+read -p 'Install Eclipse? (Y/n) ' installeclipse
+if [ $installeclipse == 'Y' ]
 then
-  echo 'Installing Nano...'
-  sudo ${MANAGER_INSTALL} nano -y
+  echo 'Installing Eclipse...'
+  sudo ${MANAGER_INSTALL} eclipse -y
 else
-  echo 'Skipping Nano install.'
+  echo 'Skipping Eclipse install.'
 fi
+
+# GNU Nano
+# read -p 'Install GNU Nano? (Y/n) ' installnano
+# if [ $installnano == 'Y' ]
+# then
+#   echo 'Installing Nano...'
+#   sudo ${MANAGER_INSTALL} nano -y
+# else
+#   echo 'Skipping Nano install.'
+# fi
 
 # Neofetch
 read -p 'Install Neofetch? (Y/n) ' installneofetch
@@ -120,9 +111,27 @@ if [[ $installneovim == 'Y' ]]; then
   # symlink for init.vim
   mkdir ~/.config/nvim
   ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
-  echo "init.vim symlink created!"
+
+  # Installing vim-plug autoloader
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
+  ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
+  ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
+  echo "Neovim symlinks created!"
+  echo "Be sure to run :PlugStatus when you open Neovim!"
 else
   echo 'Skipping Neovim install...'
+fi
+
+# NodeJS
+read -p 'Install Node.js? (Y/n) ' installnode
+if [ $installnode == 'Y' ]
+then
+  echo 'Installing Node.js...'
+  sudo ${MANAGER_INSTALL} nodejs -y
+else
+  echo 'Skipping Node.js install.'
 fi
 
 # Steam
@@ -154,26 +163,6 @@ then
   sudo ${MANAGER_INSTALL} gnome-tweaks -y
 else
   echo 'Skipping GNOME Tweaks install.'
-fi
-
-# NodeJS
-read -p 'Install Node.js? (Y/n) ' installnode
-if [ $installnode == 'Y' ]
-then
-  echo 'Installing Node.js...'
-  sudo ${MANAGER_INSTALL} nodejs -y
-else
-  echo 'Skipping Node.js install.'
-fi
-
-# Eclipse
-read -p 'Install Eclipse? (Y/n) ' installeclipse
-if [ $installeclipse == 'Y' ]
-then
-  echo 'Installing Eclipse...'
-  sudo ${MANAGER_INSTALL} eclipse -y
-else
-  echo 'Skipping Eclipse install.'
 fi
 
 # Zoom
@@ -239,6 +228,7 @@ if [[ $installzsh == 'Y' ]]; then
   # Installation of oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+  # Compatitbility with Tilix
   if [[ $installtilix == 'Y' ]]; then
     # symlink for .zshrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
@@ -254,6 +244,7 @@ if [[ $installzsh == 'Y' ]]; then
 else
   echo "Using bash..."
 
+  # Compatitbility with Tilix
   if [[ $installtilix ]]; then
     # symlink for bashrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
