@@ -6,9 +6,6 @@
   "atom-ide-ui":
     "atom-ide-diagnostics-ui": {}
   core:
-    disabledPackages: [
-      "fonts"
-    ]
     telemetryConsent: "no"
   editor:
     fontSize: 20
@@ -16,3 +13,4 @@
     userId: "b9b165d5-3148-4c18-81ea-668dc938b7f6"
   fonts:
     fontFamily: "Courier Prime Code"
+  "terminal-tab": {}

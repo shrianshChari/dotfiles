@@ -8,6 +8,8 @@
     "teletype",
     "terminal-tab",
     "compare-files",
-    "open-sesame"
+    "open-sesame",
+    "script",
+    "word-count"
   ]
 }

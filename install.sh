@@ -46,8 +46,13 @@ then
 
   # symlink for config.cson
   rm ~/.atom/config.cson
-  ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
+  ln -s $PWD/atom/config.cson ~/.atom/config.cson
   echo "Atom config.cson symlink complete!"
+
+  if [[ -d "~/.atom/packages/script/lib/grammars" ]]; then
+
+    cp $PWD/atom/python.js ~/.atom/packages/script/lib/grammars
+  fi
 else
   echo 'Skipping Atom install.'
 fi
@@ -110,14 +115,14 @@ if [[ $installneovim == 'Y' ]]; then
 
   # symlink for init.vim
   mkdir ~/.config/nvim
-  ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+  ln -s $PWD/neovim/init.vim ~/.config/nvim/init.vim
 
   # Installing vim-plug autoloader
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
-  ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
-  ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
+  ln -s $PWD/neovim/vim-plug ~/.config/nvim/vim-plug
+  ln -s $PWD/neovim/themes ~/.config/nvim/themes
+  ln -s $PWD/neovim/vimrc ~/.vimrc
   echo "Neovim symlinks created!"
   echo "Be sure to run :PlugStatus when you open Neovim!"
 else
@@ -214,7 +219,7 @@ fi
 
 # symlink for gitconfig
 rm ~/.gitconfig
-ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
+ln -s $PWD/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
 
 # installation of zsh, symlink for zsh/bash config files
@@ -233,12 +238,12 @@ if [[ $installzsh == 'Y' ]]; then
     # symlink for .zshrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
     rm ~/.zshrc
-    ln -s ~/.dotfiles/zsh/zshrctilix ~/.zshrc
+    ln -s $PWD/zsh/zshrctilix ~/.zshrc
     echo "zshrc symlink complete!"
   else
     # symlink for .zshrc
     rm ~/.zshrc
-    ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+    ln -s $PWD/zsh/zshrc ~/.zshrc
     echo "zshrc symlink complete!"
   fi
 else
@@ -249,12 +254,12 @@ else
     # symlink for bashrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
     rm ~/.bashrc
-    ln -s ~/.dotfiles/bash/bashrctilix ~/.bashrc
+    ln -s $PWD/bash/bashrctilix ~/.bashrc
     echo "bashrc symlink complete!"
   else
     # symlink for bashrc
     rm ~/.bashrc
-    ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
+    ln -s $PWD/bash/bashrc ~/.bashrc
     echo "bashrc symlink complete!"
   fi
 
@@ -262,12 +267,12 @@ else
   then
     # symlink for bash_profile
     rm ~/.bash_profile
-    ln -s ~/.dotfiles/bash/profile ~/.bash_profile
+    ln -s $PWD/bash/profile ~/.bash_profile
     echo "bash_profile symlink complete!"
   else
     # symlink for profile
     rm ~/.profile
-    ln -s ~/.dotfiles/bash/profile ~/.profile
+    ln -s $PWD/bash/profile ~/.profile
     echo "profile symlink complete!"
   fi
 fi
