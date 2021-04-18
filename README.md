@@ -23,6 +23,14 @@
 
 ### Additional housekeeping: ###
 - Make sure that you run `:PlugStatus` the first time you run Neovim after running this script
+- Enabling password asterisks:
+  - In the terminal, enter `sudo visudo`
+  - Enter `Defaults{tab}pwfeedback`
+  - Save the file, exit the file editor, exit the terminal
+
+### To-Do: ###
+- Change script to install NVM instead of just NodeJS
+- Update Eclipse to install from snap or using their tarball
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
