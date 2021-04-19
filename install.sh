@@ -134,13 +134,14 @@ else
 fi
 
 # NodeJS
-read -p 'Install Node.js? (Y/n) ' installnode
+read -p 'Install NVM? (Y/n) ' installnode
 if [ $installnode == 'Y' ]
 then
-  echo 'Installing Node.js...'
-  sudo ${MANAGER_INSTALL} nodejs -y
+  echo 'Installing NVM...'
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+  nvm install node
 else
-  echo 'Skipping Node.js install.'
+  echo 'Skipping NVM install.'
 fi
 
 # Steam
@@ -174,16 +175,6 @@ else
   echo 'Skipping GNOME Tweaks install.'
 fi
 
-# Zoom
-read -p 'Install Zoom? (Y/n) ' installzoom
-if [ $installzoom == 'Y' ]
-then
-  echo 'Installing Zoom...'
-  sudo ${MANAGER_INSTALL} zoom -y
-else
-  echo 'Skipping Zoom install.'
-fi
-
 # Snap
 read -p 'Install snap? (Y/n) ' installsnap
 if [ $installsnap ]; then
@@ -194,7 +185,7 @@ if [ $installsnap ]; then
   if [ $installslack == 'Y' ]
   then
     echo 'Installing Slack...'
-    sudo snap install zoom -y
+    sudo snap install slack
   else
     echo 'Skipping Slack install.'
   fi
@@ -204,7 +195,7 @@ if [ $installsnap ]; then
   if [ $installbitwarden == 'Y' ]
   then
     echo 'Installing Bitwarden...'
-    sudo snap install bitwarden -y
+    sudo snap install bitwarden
   else
     echo 'Skipping Bitwarden install.'
   fi
@@ -214,10 +205,20 @@ if [ $installsnap ]; then
   if [ $installfromscratch == 'Y' ]
   then
     echo 'Installing FromScratch...'
-    sudo snap install fromscratch -y
+    sudo snap install fromscratch
   else
     echo 'Skipping FromScratch install.'
   fi
+fi
+
+# Zoom
+read -p 'Install Zoom? (Y/n) ' installzoom
+if [ $installzoom == 'Y' ]
+then
+  echo 'Installing Zoom...'
+  sudo snap install zoom
+else
+  echo 'Skipping Zoom install.'
 fi
 
 # symlink for gitconfig

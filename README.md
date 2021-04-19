@@ -29,8 +29,9 @@
   - Save the file, exit the file editor, exit the terminal
 
 ### To-Do: ###
-- Change script to install NVM instead of just NodeJS
+- ~~Change script to install NVM instead of just NodeJS~~
 - Update Eclipse to install from snap or using their tarball
+- Test whether the snap packages work now
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
@@ -40,13 +41,13 @@
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
 - [Neovim](https://neovim.io) and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
-- [NodeJS](https://nodejs.org/en/) (apt)
+- [NVM](https://github.com/nvm-sh/nvm) (curl script)
 - [Steam](https://store.steampowered.com) (apt)
 - [Tilix](https://gnunn1.github.io/tilix-web/) (apt)
 - [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks) (apt)
-- [Zoom](https://zoom.us) (apt)
 - [Zsh](http://zsh.sourceforge.net) and [Oh My Zsh](https://ohmyz.sh/ "Plugin manager for zsh") (apt)
 - [Snap](https://snapcraft.io) (apt)
 - [Bitwarden](https://bitwarden.com) (snap)
 - [FromScratch](https://fromscratch.rocks) (snap)
 - [Slack](https://slack.com) (snap)
+- [Zoom](https://zoom.us) (snap)
