@@ -175,51 +175,56 @@ else
   echo 'Skipping GNOME Tweaks install.'
 fi
 
-# Snap
-read -p 'Install snap? (Y/n) ' installsnap
-if [ $installsnap ]; then
-  sudo $MANAGER_INSTALL snapd
-
-  # Slack
-  read -p 'Install Slack? (Y/n) ' installslack
-  if [ $installslack == 'Y' ]
-  then
-    echo 'Installing Slack...'
-    sudo snap install slack
-  else
-    echo 'Skipping Slack install.'
+if [[ ! command -v snap &> /dev/null ]]; then
+  # Snap
+  read -p 'Install snap? (Y/n) ' installsnap
+  if [ $installsnap ]; then
+    sudo $MANAGER_INSTALL snapd
   fi
 
-  # Bitwarden
-  read -p 'Install Bitwarden? (Y/n) ' installbitwarden
-  if [ $installbitwarden == 'Y' ]
-  then
-    echo 'Installing Bitwarden...'
-    sudo snap install bitwarden
-  else
-    echo 'Skipping Bitwarden install.'
-  fi
+  if [[ ! command -v snap &> /dev/null ]]; then
+    # Slack
+    read -p 'Install Slack? (Y/n) ' installslack
+    if [ $installslack == 'Y' ]
+    then
+      echo 'Installing Slack...'
+      sudo snap install slack
+    else
+      echo 'Skipping Slack install.'
+    fi
 
-  # FromScratch
-  read -p 'Install FromScratch? (Y/n) ' installfromscratch
-  if [ $installfromscratch == 'Y' ]
+    # Bitwarden
+    read -p 'Install Bitwarden? (Y/n) ' installbitwarden
+    if [ $installbitwarden == 'Y' ]
+    then
+      echo 'Installing Bitwarden...'
+      sudo snap install bitwarden
+    else
+      echo 'Skipping Bitwarden install.'
+    fi
+
+    # FromScratch
+    read -p 'Install FromScratch? (Y/n) ' installfromscratch
+    if [ $installfromscratch == 'Y' ]
+    then
+      echo 'Installing FromScratch...'
+      sudo snap install fromscratch
+    else
+      echo 'Skipping FromScratch install.'
+    fi
+  fi
+  
+  # Zoom
+  read -p 'Install Zoom? (Y/n) ' installzoom
+  if [ $installzoom == 'Y' ]
   then
-    echo 'Installing FromScratch...'
-    sudo snap install fromscratch
+    echo 'Installing Zoom...'
+    sudo snap install zoom
   else
-    echo 'Skipping FromScratch install.'
+    echo 'Skipping Zoom install.'
   fi
 fi
 
-# Zoom
-read -p 'Install Zoom? (Y/n) ' installzoom
-if [ $installzoom == 'Y' ]
-then
-  echo 'Installing Zoom...'
-  sudo snap install zoom
-else
-  echo 'Skipping Zoom install.'
-fi
 
 # symlink for gitconfig
 rm ~/.gitconfig
