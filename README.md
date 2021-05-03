@@ -35,7 +35,7 @@
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
-- [Brave Browser](htpps://brave.com) (apt)
+- [Brave Browser](https://brave.com/) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
