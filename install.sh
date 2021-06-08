@@ -46,12 +46,12 @@ then
 
   # symlink for config.cson
   rm ~/.atom/config.cson
-  ln -s $PWD/atom/config.cson ~/.atom/config.cson
+  ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
   echo "Atom config.cson symlink complete!"
 
   if [[ -d "~/.atom/packages/script/lib/grammars" ]]; then
 
-    cp $PWD/atom/python.js ~/.atom/packages/script/lib/grammars
+    cp ~/.dotfiles/atom/python.js ~/.atom/packages/script/lib/grammars
   fi
 else
   echo 'Skipping Atom install.'
@@ -118,15 +118,33 @@ if [[ $installneovim == 'Y' ]]; then
   sudo ${MANAGER_INSTALL} neovim -y
 
   # symlink for init.vim
-  mkdir ~/.config/nvim
-  ln -s $PWD/neovim/init.vim ~/.config/nvim/init.vim
+  if [ ! -d "~/.config/nvim" ]; then
+    # mkdir ~/.config/nvim
+    echo "Folder doesn't exist"
+  fi
+
+  if [ -f "~/.config/nvim/init.vim" ]; then
+    rm ~/.config/nvim/init.vim
+    ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+  fi
 
   # Installing vim-plug autoloader
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  ln -s $PWD/neovim/vim-plug ~/.config/nvim/vim-plug
-  ln -s $PWD/neovim/themes ~/.config/nvim/themes
-  ln -s $PWD/neovim/vimrc ~/.vimrc
+  if [ -e "~/.config/nvim/vim-plug" ]; then
+    rm -rf ~/.config/nvim/vim-plug
+    ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
+  fi
+
+  if [ -f "~/.vimrc" ]; then
+    rm ~/.vimrc
+    ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
+  fi
+
+  if [ -d "~/.config/nvim/themes" ]; then
+    rm -rf ~/.config/nvim/themes
+    ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
+  fi
   echo "Neovim symlinks created!"
   echo "Be sure to run :PlugStatus when you open Neovim!"
 else
@@ -175,14 +193,14 @@ else
   echo 'Skipping GNOME Tweaks install.'
 fi
 
-if [[ ! command -v snap &> /dev/null ]]; then
+if [ ! command -v snap &> /dev/null ]; then
   # Snap
   read -p 'Install snap? (Y/n) ' installsnap
   if [ $installsnap ]; then
     sudo $MANAGER_INSTALL snapd
   fi
 
-  if [[ ! command -v snap &> /dev/null ]]; then
+  if [ ! command -v snap &> /dev/null ]; then
     # Slack
     read -p 'Install Slack? (Y/n) ' installslack
     if [ $installslack == 'Y' ]
@@ -213,7 +231,7 @@ if [[ ! command -v snap &> /dev/null ]]; then
       echo 'Skipping FromScratch install.'
     fi
   fi
-  
+
   # Zoom
   read -p 'Install Zoom? (Y/n) ' installzoom
   if [ $installzoom == 'Y' ]
@@ -228,7 +246,7 @@ fi
 
 # symlink for gitconfig
 rm ~/.gitconfig
-ln -s $PWD/git/gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
 
 # installation of zsh, symlink for zsh/bash config files
@@ -247,12 +265,12 @@ if [[ $installzsh == 'Y' ]]; then
     # symlink for .zshrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
     rm ~/.zshrc
-    ln -s $PWD/zsh/zshrctilix ~/.zshrc
+    ln -s ~/.dotfiles/zsh/zshrctilix ~/.zshrc
     echo "zshrc symlink complete!"
   else
     # symlink for .zshrc
     rm ~/.zshrc
-    ln -s $PWD/zsh/zshrc ~/.zshrc
+    ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
     echo "zshrc symlink complete!"
   fi
 else
@@ -263,12 +281,12 @@ else
     # symlink for bashrc
     sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
     rm ~/.bashrc
-    ln -s $PWD/bash/bashrctilix ~/.bashrc
+    ln -s ~/.dotfiles/bash/bashrctilix ~/.bashrc
     echo "bashrc symlink complete!"
   else
     # symlink for bashrc
     rm ~/.bashrc
-    ln -s $PWD/bash/bashrc ~/.bashrc
+    ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
     echo "bashrc symlink complete!"
   fi
 
@@ -276,12 +294,12 @@ else
   then
     # symlink for bash_profile
     rm ~/.bash_profile
-    ln -s $PWD/bash/profile ~/.bash_profile
+    ln -s ~/.dotfiles/bash/profile ~/.bash_profile
     echo "bash_profile symlink complete!"
   else
     # symlink for profile
     rm ~/.profile
-    ln -s $PWD/bash/profile ~/.profile
+    ln -s ~/.dotfiles/bash/profile ~/.profile
     echo "profile symlink complete!"
   fi
 fi
