@@ -27,6 +27,7 @@
   - In the terminal, enter `sudo visudo`
   - Enter `Defaults{tab}pwfeedback`
   - Save the file, exit the file editor, exit the terminal
+- Add [bookmarks](https://gist.github.com/shrianshChari/791f5cb4422b0a9b4b4d2b7229e318e3#file-bookmarks-html) to browser.
 
 ### To-Do: ###
 - ~~Change script to install NVM instead of just NodeJS~~
@@ -35,7 +36,7 @@
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
-- [Brave Browser](https://brave.com/) (apt)
+- [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
