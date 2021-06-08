@@ -125,26 +125,27 @@ if [[ $installneovim == 'Y' ]]; then
 
   if [ -f "~/.config/nvim/init.vim" ]; then
     rm ~/.config/nvim/init.vim
-    ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
   fi
+  ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 
   # Installing vim-plug autoloader
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   if [ -e "~/.config/nvim/vim-plug" ]; then
     rm -rf ~/.config/nvim/vim-plug
-    ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
   fi
+  ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
 
   if [ -f "~/.vimrc" ]; then
     rm ~/.vimrc
-    ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
   fi
+  ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
 
   if [ -d "~/.config/nvim/themes" ]; then
     rm -rf ~/.config/nvim/themes
-    ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
   fi
+  ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
+
   echo "Neovim symlinks created!"
   echo "Be sure to run :PlugStatus when you open Neovim!"
 else
