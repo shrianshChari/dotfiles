@@ -99,6 +99,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Simple way to suspend computer from command line
 alias suspend="systemctl suspend"
 
+# Open vimrc or bashrc within vi from anywhere
+alias vimrc="vi ~/.vimrc"
+alias bashrc="vi ~/.bashrc"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
