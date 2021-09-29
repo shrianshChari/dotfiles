@@ -43,8 +43,7 @@ let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
 
-" Plugins to be loaded
-call plug#begin('~/.vim/autoload/plugged')
+call plug#begin('~/.config/nvim/autoload/plugged')
 
 " File Explorer
 Plug 'scrooloose/NERDTree'
@@ -58,6 +57,13 @@ Plug 'itchyny/lightline.vim'
 " Useful Git tool
 Plug 'tpope/vim-fugitive'
 
+" Discord Rich Presence
+Plug 'vimsence/vimsence'
+
+" Rainbow brackets plugin
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
 " One dark theme
 Plug 'joshdick/onedark.vim'
 
@@ -67,7 +73,5 @@ Plug 'sheerun/vim-polyglot'
 " Proper Java Syntax
 Plug 'uiiaoo/java-syntax.vim'
 
-" Discord Rich Presence
-Plug 'vimsence/vimsence'
 call plug#end()
 ```
