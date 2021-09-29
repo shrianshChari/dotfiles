@@ -33,6 +33,7 @@
 - ~~Change script to install NVM instead of just NodeJS~~
 - Update Eclipse to install from snap or using their tarball
 - Test whether the snap packages work now
+- Make the installer ask all the questions at the beginning
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
@@ -41,7 +42,7 @@
 - [Eclipse](https://eclipse.org) (apt)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
-- [Neovim](https://neovim.io) and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
+- [Neovim](https://neovim.io "Configuration now supports regular vi") and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
 - [NVM](https://github.com/nvm-sh/nvm) (curl script)
 - [Steam](https://store.steampowered.com) (apt)
 - [Tilix](https://gnunn1.github.io/tilix-web/) (apt)
