@@ -11,6 +11,7 @@ mv onedark.vim/autoload .vim/
 mv onedark.vim/colors .vim/
 cd .vim/autoload
 
+# Install Vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
