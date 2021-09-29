@@ -7,6 +7,8 @@ vi -v
 
 cd
 mkdir .vim
+
+# Install syntax highlighting that I use
 git clone https://github.com/joshdick/onedark.vim.git
 mv onedark.vim/autoload .vim/
 mv onedark.vim/colors .vim/
@@ -22,6 +24,9 @@ git clone https://github.com/itchyny/lightline.vim.git
 
 # Useful file explorer within vim
 git clone https://github.com/preservim/nerdtree.git
+
+# Useful git tool within vim
+git clone https://github.com/tpope/vim-fugitive.git
 
 cd ~/.vim/pack/syntax/start
 
