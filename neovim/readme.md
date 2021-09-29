@@ -2,9 +2,6 @@
 If you want to use this for regular vim, as opposed for neovim, here's what you should do:
 
 ```bash
-vi -v
-# Ensure that you are using Vim8, since this uses its package manager
-
 cd
 mkdir .vim
 
@@ -12,29 +9,11 @@ mkdir .vim
 git clone https://github.com/joshdick/onedark.vim.git
 mv onedark.vim/autoload .vim/
 mv onedark.vim/colors .vim/
-cd .vim
-mkdir -p pack/{plugins,syntax}/start
-cd pack/plugins/start
+cd .vim/autoload
 
-# Autocompleting parentheses, quotations, etc.
-git clone https://github.com/jiangmiao/auto-pairs.git
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Adding a cool statusline to the bottom of the screen
-git clone https://github.com/itchyny/lightline.vim.git
-
-# Useful file explorer within vim
-git clone https://github.com/preservim/nerdtree.git
-
-# Useful git tool within vim
-git clone https://github.com/tpope/vim-fugitive.git
-
-cd ~/.vim/pack/syntax/start
-
-# Language syntax pack
-git clone https://github.com/sheerun/vim-polyglot.git
-
-# Syntax highlighting for Java
-git clone https://github.com/uiiaoo/java-syntax.vim.git
 ```
 
 Then use this vimrc file for complete configuration
@@ -62,4 +41,29 @@ let g:lightline = {
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+
+" Plugins to be loaded
+call plug#begin('~/.vim/autoload/plugged')
+
+" File Explorer
+Plug 'scrooloose/NERDTree'
+
+" Auto pairs for '(' '[' '{'
+Plug 'jiangmiao/auto-pairs'
+
+" Lightline statusline
+Plug 'itchyny/lightline.vim'
+
+" Useful Git tool
+Plug 'tpope/vim-fugitive'
+
+" One dark theme
+Plug 'joshdick/onedark.vim'
+
+" Better Syntax Support
+Plug 'sheerun/vim-polyglot'
+
+" Proper Java Syntax
+Plug 'uiiaoo/java-syntax.vim'
+call plug#end()
 ```
