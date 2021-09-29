@@ -65,5 +65,8 @@ Plug 'sheerun/vim-polyglot'
 
 " Proper Java Syntax
 Plug 'uiiaoo/java-syntax.vim'
+
+" Discord Rich Presence
+Plug 'vimsence/vimsence'
 call plug#end()
 ```
