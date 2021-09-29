@@ -17,5 +17,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " One dark theme
     Plug 'joshdick/onedark.vim'
+    
+    " Lightline statusline
+    Plug 'itchyny/lightline.vim'
 
+    " Proper Java Syntax
+    Plug 'uiiaoo/java-syntax.vim'
 call plug#end()
