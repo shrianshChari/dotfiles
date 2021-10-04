@@ -30,10 +30,11 @@
 - Add [bookmarks](https://gist.github.com/shrianshChari/791f5cb4422b0a9b4b4d2b7229e318e3#file-bookmarks-html) to browser.
 
 ### To-Do: ###
-- ~~Change script to install NVM instead of just NodeJS~~
-- Update Eclipse to install from snap or using their tarball
-- Test whether the snap packages work now
-- Make the installer ask all the questions at the beginning
+- [x] Change script to install NVM instead of just NodeJS
+- [ ] Update Eclipse to install from snap or using their tarball
+- [ ] Test whether the snap packages work now
+- [ ] Make the installer ask all the questions at the beginning
+- [ ] Consolidate all vim config files into only one file (move `plugin.vim` into `init.vim`)
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)

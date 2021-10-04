@@ -127,6 +127,7 @@ if [[ $installneovim == 'Y' ]]; then
     rm ~/.config/nvim/init.vim
   fi
   ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
+  ln -s ~/.dotfiles/neovim/snippets ~/.config/nvim/snippets
 
   # Installing vim-plug autoloader
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
