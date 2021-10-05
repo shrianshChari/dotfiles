@@ -36,9 +36,6 @@ Plug 'sheerun/vim-polyglot'
 " Proper Java Syntax
 Plug 'uiiaoo/java-syntax.vim'
 
-" Java Autocomplete (used mainly for constructor and accessor generation)
-Plug 'artur-shaik/vim-javacomplete2'
- 
 " Snippet engine to enable vim-snippets
 Plug 'SirVer/ultisnips'
  
