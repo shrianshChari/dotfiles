@@ -35,6 +35,7 @@
 - [ ] Test whether the snap packages work now
 - [ ] Make the installer ask all the questions at the beginning
 - [ ] Consolidate all vim config files into only one file (move `plugin.vim` into `init.vim`)
+- [ ] Figure out how to download a folder from a remote git repository (probably by downloading a zip file)
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)

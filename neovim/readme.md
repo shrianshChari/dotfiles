@@ -15,6 +15,7 @@ cd .vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Some method of downloading neovim/snippets directory to computer from remote git repository
 ```
 
 Then use this vimrc file for complete configuration
@@ -72,6 +73,13 @@ Plug 'sheerun/vim-polyglot'
 
 " Proper Java Syntax
 Plug 'uiiaoo/java-syntax.vim'
+
+" Snippet engine to enable vim-snippets
+Plug 'SirVer/ultisnips'
+ 
+" Bunch of snippets (Show with Ctrl-L)
+" https://github.com/honza/vim-snippets
+Plug 'honza/vim-snippets'
 
 call plug#end()
 ```
