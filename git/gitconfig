@@ -8,4 +8,4 @@
 	email = 30420527+shrianshChari@users.noreply.github.com
 [user]
 [core]
-	editor = atom
+	editor = vi
