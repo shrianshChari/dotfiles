@@ -22,7 +22,7 @@
 - Made updating packages optional
 
 ### Additional housekeeping: ###
-- Make sure that you run `:PlugStatus` the first time you run Neovim after running this script
+- Make sure that you run `:PlugStatus` and `:CocInstall coc-json coc-tsserver` the first time you run Neovim after running this script
 - Enabling password asterisks:
   - In the terminal, enter `sudo visudo`
   - Enter `Defaults{tab}pwfeedback`

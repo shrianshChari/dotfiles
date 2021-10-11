@@ -43,4 +43,7 @@ Plug 'SirVer/ultisnips'
 " https://github.com/honza/vim-snippets
 Plug 'honza/vim-snippets'
 
+" TypeScript Intellisense
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
