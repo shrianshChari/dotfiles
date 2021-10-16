@@ -46,4 +46,6 @@ Plug 'honza/vim-snippets'
 " TypeScript Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" NERDTree icons
+Plug 'ryanoasis/vim-devicons'
 call plug#end()

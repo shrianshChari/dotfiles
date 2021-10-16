@@ -13,8 +13,8 @@ set laststatus=2
 " lightline configuration
 " https://github.com/itchyny/lightline.vim
 let g:lightline = {
-	\ 'colorscheme': 'one',
-	\ }
+      \ 'colorscheme': 'one',
+      \ }
 
 " Configuration for UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -27,10 +27,17 @@ nnoremap n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Start NERDTree. If a file is specified, move the cursor to its window.
+" Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+      \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
+" Configuration for rainbow
+let g:rainbow_conf = {
+      \'separately': {
+      \   'nerdtree': 0,
+      \}
+      \}
 
 " Configuration for coc.vim
 
@@ -88,7 +95,7 @@ endif
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
