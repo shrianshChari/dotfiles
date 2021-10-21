@@ -16,70 +16,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Some method of downloading neovim/snippets directory to computer from remote git repository
+
+# Downloading Nerd font for vim-devicons
+wget -P ~/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
 ```
 
-Then use this vimrc file for complete configuration
+Then use the `init.vim` file alongside the following snippet for complete configuration
 ```vim
-set showmatch
-set mouse=v
-set tabstop=2
-set shiftwidth=2
-set autoindent
-set number
-set hlsearch
-set noshowmode
-set laststatus=2
-
-syntax on
-colorscheme onedark
-
-" lightline configuration
-" https://github.com/itchyny/lightline.vim
-let g:lightline = {
-	\ 'colorscheme': 'one',
-	\ }
-
 " https://askubuntu.com/questions/42663/how-to-make-cursor-change-from-thin-line-to-block-based-on-normal-or-insert-mode
 let &t_SI = "\<esc>[5 q"  " blinking I-beam in insert mode
 let &t_SR = "\<esc>[3 q"  " blinking underline in replace mode
 let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
-
-call plug#begin('~/.config/nvim/autoload/plugged')
-
-" File Explorer
-Plug 'scrooloose/NERDTree'
-
-" Auto pairs for '(' '[' '{'
-Plug 'jiangmiao/auto-pairs'
-
-" Lightline statusline
-Plug 'itchyny/lightline.vim'
-
-" Useful Git tool
-Plug 'tpope/vim-fugitive'
-
-" Discord Rich Presence
-Plug 'vimsence/vimsence'
-
-" Rainbow brackets plugin
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-
-" One dark theme
-Plug 'joshdick/onedark.vim'
-
-" Better Syntax Support
-Plug 'sheerun/vim-polyglot'
-
-" Proper Java Syntax
-Plug 'uiiaoo/java-syntax.vim'
-
-" Snippet engine to enable vim-snippets
-Plug 'SirVer/ultisnips'
- 
-" Bunch of snippets (Show with Ctrl-L)
-" https://github.com/honza/vim-snippets
-Plug 'honza/vim-snippets'
-
-call plug#end()
 ```
