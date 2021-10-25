@@ -73,6 +73,8 @@ ZSH_THEME="bira"
 plugins=(
 git
 python
+colored-man-pages
+zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
