@@ -34,8 +34,10 @@ Or, to install the vimrc off a single script:
 rm ~/.vimrc
 wget -O ~/.vimrc https://raw.githubusercontent.com/shrianshChari/dotfiles/main/neovim/init.vim
 
-echo "\" https://askubuntu.com/questions/42663/how-to-make-cursor-change-from-thin-line-to-block-based-on-normal-or-insert-mode" >> ~/.vimrc
+echo "\n\" https://askubuntu.com/questions/42663/how-to-make-cursor-change-from-thin-line-to-block-based-on-normal-or-insert-mode" >> ~/.vimrc
 echo "let &t_SI = \"\<esc>[5 q\"  \" blinking I-beam in insert mode" >> ~/.vimrc
 echo "let &t_SR = \"\<esc>[3 q\"  \" blinking underline in replace mode" >> ~/.vimrc
 echo "let &t_EI = \"\<esc>[ q\"  \" default cursor (usually blinking block) otherwise" >> ~/.vimrc
+
+sed -i 's/\/\.config\/nvim/\/\.vim/g' ~/.vimrc
 ```
