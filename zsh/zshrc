@@ -75,6 +75,10 @@ git
 python
 colored-man-pages
 zsh-syntax-highlighting
+themes
+ubuntu
+vi-mode
+history
 )
 
 source $ZSH/oh-my-zsh.sh

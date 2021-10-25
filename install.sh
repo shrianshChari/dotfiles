@@ -29,6 +29,17 @@ test_distro
 # Updating distro packages
 # May not always work, since I'm not familiar with any
 read -p 'Update packages? (Y/n) ' updatepackages
+read -p 'Install Atom? (Y/n) ' installatom
+read -p 'Install Brave Browser? (Y/n) ' installbrave
+read -p 'Install Discord? (Y/n) ' installdiscord
+read -p 'Install Neofetch? (Y/n) ' installneofetch
+read -p 'Install Neovim? (Y/n) ' installneovim
+read -p 'Install NVM? (Y/n) ' installnode
+read -p 'Install Steam? (Y/n) ' installsteam
+read -p 'Install Tilix? (Y/n) ' installtilix
+read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
+read -p 'Install zsh? (Y/n) ' installzsh
+
 if [[ $updatepackages == 'Y' ]]; then
   echo 'Updating packages...'
   $UPDATE_PACKAGES
@@ -37,7 +48,6 @@ else
 fi
 
 # Atom
-read -p 'Install Atom? (Y/n) ' installatom
 if [ $installatom == 'Y' ]
 then
   echo 'Installing Atom...'
@@ -58,7 +68,6 @@ else
 fi
 
 # Brave Browser
-read -p 'Install Brave Browser? (Y/n) ' installbrave
 if [ $installbrave == 'Y' ]
 then
   echo 'Installing Brave Browser...'
@@ -72,7 +81,6 @@ else
 fi
 
 # Discord
-read -p 'Install Discord? (Y/n) ' installdiscord
 if [ $installdiscord == 'Y' ]
 then
   echo 'Installing Discord...'
@@ -102,7 +110,6 @@ fi
 # fi
 
 # Neofetch
-read -p 'Install Neofetch? (Y/n) ' installneofetch
 if [ $installneofetch == 'Y' ]
 then
   echo 'Installing Neofetch...'
@@ -112,7 +119,6 @@ else
 fi
 
 # Neovim
-read -p 'Install Neovim? (Y/n) ' installneovim
 if [[ $installneovim == 'Y' ]]; then
   echo 'Installing Neovim...'
   sudo ${MANAGER_INSTALL} neovim -y
@@ -153,8 +159,7 @@ else
   echo 'Skipping Neovim install...'
 fi
 
-# NodeJS
-read -p 'Install NVM? (Y/n) ' installnode
+# NVM
 if [ $installnode == 'Y' ]
 then
   echo 'Installing NVM...'
@@ -165,7 +170,6 @@ else
 fi
 
 # Steam
-read -p 'Install Steam? (Y/n) ' installsteam
 if [ $installsteam == 'Y' ]
 then
   echo 'Installing Steam...'
@@ -175,7 +179,6 @@ else
 fi
 
 # Tilix
-read -p 'Install Tilix? (Y/n) ' installtilix
 if [ $installtilix == 'Y' ]
 then
   echo 'Installing Tilix...'
@@ -186,7 +189,6 @@ else
 fi
 
 # GNOME Tweaks
-read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 if [ $installtweaks == 'Y' ]
 then
   echo 'Installing GNOME Tweaks...'
@@ -252,7 +254,6 @@ ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
 
 # installation of zsh, symlink for zsh/bash config files
-read -p 'Install zsh? (Y/n) ' installzsh
 if [[ $installzsh == 'Y' ]]; then
   echo "Using zsh..."
 
