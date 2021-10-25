@@ -14,6 +14,14 @@ set laststatus=2
 " https://github.com/itchyny/lightline.vim
 let g:lightline = {
       \ 'colorscheme': 'one',
+      \ 'active': {
+      \ 'left': [ [ 'mode', 'paste' ],
+      \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ }
+      \ 
       \ }
 
 " Configuration for UltiSnips
@@ -228,8 +236,8 @@ Plug 'jiangmiao/auto-pairs'
 " Lightline statusline
 Plug 'itchyny/lightline.vim'
 
-" Useful Git tool
-Plug 'tpope/vim-fugitive'
+" Git branch name
+Plug 'itchyny/vim-gitbranch'
 
 " Discord Rich Presence
 Plug 'vimsence/vimsence'
