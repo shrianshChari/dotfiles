@@ -262,7 +262,17 @@ if [[ $installzsh == 'Y' ]]; then
 
   # Installation of oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+
+  # zsh syntax highlighting
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+  # Powerlevel10k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+  # Install Nerd Font for Vim-Devicons and Powerlevel10k
+  wget -P ~/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
+
+  ln -s ~/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 
   # Compatitbility with Tilix
   if [[ $installtilix == 'Y' ]]; then
