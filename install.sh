@@ -40,7 +40,7 @@ read -p 'Install Tilix? (Y/n) ' installtilix
 read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 read -p 'Install zsh? (Y/n) ' installzsh
 
-if [[ $updatepackages == 'Y' ]]; then
+if [[ $updatepackages == 'Y' || $updatepackages == 'y' ]]; then
   echo 'Updating packages...'
   $UPDATE_PACKAGES
 else
@@ -48,7 +48,7 @@ else
 fi
 
 # Atom
-if [ $installatom == 'Y' ]
+if [ $installatom == 'Y' || $installatom == 'y' ]
 then
   echo 'Installing Atom...'
   sudo ${MANAGER_INSTALL} atom -y
@@ -68,7 +68,7 @@ else
 fi
 
 # Brave Browser
-if [ $installbrave == 'Y' ]
+if [ $installbrave == 'Y' || $installbrave == 'y' ]
 then
   echo 'Installing Brave Browser...'
   sudo apt install apt-transport-https curl
@@ -81,7 +81,7 @@ else
 fi
 
 # Discord
-if [ $installdiscord == 'Y' ]
+if [ $installdiscord == 'Y' || $installdiscord == 'y' ]
 then
   echo 'Installing Discord...'
   sudo ${MANAGER_INSTALL} discord -y
@@ -91,7 +91,7 @@ fi
 
 # Eclipse
 read -p 'Install Eclipse? (Y/n) ' installeclipse
-if [ $installeclipse == 'Y' ]
+if [ $installeclipse == 'Y' || $installeclipse == 'y' ]
 then
   echo 'Installing Eclipse...'
   sudo ${MANAGER_INSTALL} eclipse -y
@@ -110,7 +110,7 @@ fi
 # fi
 
 # Neofetch
-if [ $installneofetch == 'Y' ]
+if [ $installneofetch == 'Y' || $installneofetch == 'y' ]
 then
   echo 'Installing Neofetch...'
   sudo ${MANAGER_INSTALL} neofetch -y
@@ -119,7 +119,7 @@ else
 fi
 
 # Neovim
-if [[ $installneovim == 'Y' ]]; then
+if [[ $installneovim == 'Y' || $installneovim == 'y' ]]; then
   echo 'Installing Neovim...'
   sudo ${MANAGER_INSTALL} neovim -y
 
@@ -160,7 +160,7 @@ else
 fi
 
 # NVM
-if [ $installnode == 'Y' ]
+if [ $installnode == 'Y' || $installnode == 'y' ]
 then
   echo 'Installing NVM...'
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
@@ -170,7 +170,7 @@ else
 fi
 
 # Steam
-if [ $installsteam == 'Y' ]
+if [ $installsteam == 'Y' || $installsteam == 'y' ]
 then
   echo 'Installing Steam...'
   sudo ${MANAGER_INSTALL} steam -y
@@ -179,7 +179,7 @@ else
 fi
 
 # Tilix
-if [ $installtilix == 'Y' ]
+if [ $installtilix == 'Y' || $installtilix == 'y' ]
 then
   echo 'Installing Tilix...'
   sudo ${MANAGER_INSTALL} tilix -y
@@ -189,7 +189,7 @@ else
 fi
 
 # GNOME Tweaks
-if [ $installtweaks == 'Y' ]
+if [ $installtweaks == 'Y' || $installtweaks == 'y' ]
 then
   echo 'Installing GNOME Tweaks...'
   sudo ${MANAGER_INSTALL} gnome-tweaks -y
@@ -200,14 +200,14 @@ fi
 if [ ! command -v snap &> /dev/null ]; then
   # Snap
   read -p 'Install snap? (Y/n) ' installsnap
-  if [ $installsnap ]; then
+  if [ $installsnap == 'Y' || $installsnap == 'y' ]; then
     sudo $MANAGER_INSTALL snapd
   fi
 
   if [ ! command -v snap &> /dev/null ]; then
     # Slack
     read -p 'Install Slack? (Y/n) ' installslack
-    if [ $installslack == 'Y' ]
+    if [ $installslack == 'Y' || $installslack == 'y' ]
     then
       echo 'Installing Slack...'
       sudo snap install slack
@@ -217,7 +217,7 @@ if [ ! command -v snap &> /dev/null ]; then
 
     # Bitwarden
     read -p 'Install Bitwarden? (Y/n) ' installbitwarden
-    if [ $installbitwarden == 'Y' ]
+    if [ $installbitwarden == 'Y' || $installbitwarden == 'y' ]
     then
       echo 'Installing Bitwarden...'
       sudo snap install bitwarden
@@ -227,7 +227,7 @@ if [ ! command -v snap &> /dev/null ]; then
 
     # FromScratch
     read -p 'Install FromScratch? (Y/n) ' installfromscratch
-    if [ $installfromscratch == 'Y' ]
+    if [ $installfromscratch == 'Y' || $installfromscratch == 'y' ]
     then
       echo 'Installing FromScratch...'
       sudo snap install fromscratch
@@ -238,7 +238,7 @@ if [ ! command -v snap &> /dev/null ]; then
 
   # Zoom
   read -p 'Install Zoom? (Y/n) ' installzoom
-  if [ $installzoom == 'Y' ]
+  if [ $installzoom == 'Y' || $installzoom == 'y' ]
   then
     echo 'Installing Zoom...'
     sudo snap install zoom
@@ -254,7 +254,7 @@ ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 echo "gitconfig symlink complete!"
 
 # installation of zsh, symlink for zsh/bash config files
-if [[ $installzsh == 'Y' ]]; then
+if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
   echo "Using zsh..."
 
   # Installation of zsh
