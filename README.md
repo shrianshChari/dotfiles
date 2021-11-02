@@ -46,12 +46,13 @@ sudo ./install.sh
 - [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
+- [Kitty](https://sw.kovidgoyal.net/kitty/)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
 - [Neovim](https://neovim.io "Configuration now supports regular vi") and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
 - [NVM](https://github.com/nvm-sh/nvm) (curl script)
 - [Steam](https://store.steampowered.com) (apt)
-- [Tilix](https://gnunn1.github.io/tilix-web/) (apt)
+- ~~[Tilix](https://gnunn1.github.io/tilix-web/ "Switched to using Kitty as my terminal emulator") (apt)~~
 - [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks) (apt)
 - [Zsh](http://zsh.sourceforge.net) and [Oh My Zsh](https://ohmyz.sh/ "Plugin manager for zsh") (apt)
 - [Snap](https://snapcraft.io) (apt)

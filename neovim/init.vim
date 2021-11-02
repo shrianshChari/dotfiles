@@ -267,6 +267,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " NERDTree icons
 Plug 'ryanoasis/vim-devicons'
+
+" kitty.conf highlighting
+Plug 'fladson/vim-kitty'
+
 call plug#end()
 
 " New color scheme

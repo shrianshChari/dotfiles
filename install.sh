@@ -32,11 +32,12 @@ read -p 'Update packages? (Y/n) ' updatepackages
 read -p 'Install Atom? (Y/n) ' installatom
 read -p 'Install Brave Browser? (Y/n) ' installbrave
 read -p 'Install Discord? (Y/n) ' installdiscord
+read -p 'Install Kitty? (Y/n) ' installkitty
 read -p 'Install Neofetch? (Y/n) ' installneofetch
 read -p 'Install Neovim? (Y/n) ' installneovim
 read -p 'Install NVM? (Y/n) ' installnode
 read -p 'Install Steam? (Y/n) ' installsteam
-read -p 'Install Tilix? (Y/n) ' installtilix
+# read -p 'Install Tilix? (Y/n) ' installtilix
 read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 read -p 'Install zsh? (Y/n) ' installzsh
 
@@ -90,13 +91,27 @@ else
 fi
 
 # Eclipse
-read -p 'Install Eclipse? (Y/n) ' installeclipse
+# read -p 'Install Eclipse? (Y/n) ' installeclipse
 if [ $installeclipse == 'Y' || $installeclipse == 'y' ]
 then
   echo 'Installing Eclipse...'
   sudo ${MANAGER_INSTALL} eclipse -y
 else
   echo 'Skipping Eclipse install.'
+fi
+
+# Kitty
+if [ $installkitty == 'Y' || $installkitty == 'y']
+then
+  echo 'Installing Kitty...'
+  sudo ${MANAGER_INSTALL} kitty -y
+  sudo update-alternatives --config x-terminal-emulator
+
+  mkdir ~/.config/kitty/
+
+  ln -s ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+else
+  echo 'Skipping Kitty install.'
 fi
 
 # GNU Nano
