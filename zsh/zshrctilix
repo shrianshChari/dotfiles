@@ -122,6 +122,7 @@ alias suspend="systemctl suspend"
 # Open vimrc or zshrc within vi from anywhere
 alias vimrc="vi ~/.vimrc"
 alias zshrc="vi ~/.zshrc"
+alias gitconfig="vi ~/.gitconfig"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
