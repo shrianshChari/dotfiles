@@ -32,6 +32,7 @@ sudo ./install.sh
   - Enter `Defaults{tab}pwfeedback`
   - Save the file, exit the file editor, exit the terminal
 - Add [bookmarks](https://gist.github.com/shrianshChari/791f5cb4422b0a9b4b4d2b7229e318e3#file-bookmarks-html) to browser.
+- Follow [these instructions](https://gist.github.com/andrebrait/961cefe730f4a2c41f57911e6195e444) to get Keychron keyboard set up properly
 
 ### To-Do: ###
 - [x] Change script to install NVM instead of just NodeJS
