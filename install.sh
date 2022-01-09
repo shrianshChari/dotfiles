@@ -289,6 +289,9 @@ if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
 
   ln -s ~/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh
 
+  # Changing default shell
+  chsh -s $(which zsh)
+
   # Compatitbility with Tilix
   if [[ $installtilix == 'Y' ]]; then
     # symlink for .zshrc
