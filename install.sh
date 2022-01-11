@@ -288,6 +288,7 @@ if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
   wget -P ~/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
 
   ln -s ~/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+  ln -s ~/.dotfiles/zsh/schari ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
   # Changing default shell
   chsh -s $(which zsh)
