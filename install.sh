@@ -33,6 +33,7 @@ read -p 'Install Atom? (Y/n) ' installatom
 read -p 'Install Brave Browser? (Y/n) ' installbrave
 read -p 'Install Discord? (Y/n) ' installdiscord
 read -p 'Install Kitty? (Y/n) ' installkitty
+read -p 'Install Modern Unix scripts? (Y/n) ' installmu
 read -p 'Install Neofetch? (Y/n) ' installneofetch
 read -p 'Install Neovim? (Y/n) ' installneovim
 read -p 'Install NVM? (Y/n) ' installnode
@@ -113,6 +114,25 @@ then
 else
   echo 'Skipping Kitty install.'
 fi
+
+# Modern Unix
+if [ $installmu == 'Y' || $installmu == 'y']
+then
+  echo 'Installing Modern Unix...'
+
+  # bat
+  sudo ${MANAGER_INSTALL} bat -y
+
+  # lsd
+  wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
+  chmod +x lsd_0.20.1_amd64.deb
+  sudo dpkg -i lsd_0.20.1_amd64.deb
+  rm lsd_0.20.1_amd64.deb
+
+else
+  echo 'Skipping Modern Unix install.'
+fi
+
 
 # GNU Nano
 # read -p 'Install GNU Nano? (Y/n) ' installnano
