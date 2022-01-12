@@ -49,8 +49,8 @@ sudo ./install.sh
 - [Eclipse](https://eclipse.org) (apt)
 - [Kitty](https://sw.kovidgoyal.net/kitty/)
 - [Modern Unix Scripts:](https://github.com/ibraheemdev/modern-unix)
-  - [bat](https://github.com/sharkdp/bat) (apt)
-  - [lsd](https://github.com/Peltoche/lsd) (deb)
+  - [`bat`](https://github.com/sharkdp/bat) (apt)
+  - [`lsd`](https://github.com/Peltoche/lsd) (deb)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
 - [Neovim](https://neovim.io "Configuration now supports regular vi") and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
