@@ -275,3 +275,55 @@ call plug#end()
 
 " New color scheme
 source $HOME/.config/nvim/themes/onedark.vim
+
+" Defines the following window structure
+" ______________________________
+" |      |                      |
+" |  N   |                      |
+" |  E   |       editor 1       |
+" |  R   |                      |
+" |  D   |                      |
+" |  T   |----------------------|
+" |  r   |          |     t     |
+" |  e   |  editor  |     e     |
+" |  e   |    2     |     r     |
+" |      |          |     m     |
+" -------------------------------
+" Remember that ctrl w + hjkl helps you navigate between windows
+" Call functions with :call HMain()
+function HMain()
+  NERDTreeFocus
+  wincmd l
+  sp
+  wincmd j
+  vsp
+  wincmd l
+  term
+  wincmd k
+endfunction
+
+" Defines the following window structure
+" ______________________________
+" |      |          |           |
+" |  N   |          |   editor  |
+" |  E   |          |     2     |
+" |  R   |  editor  |           |
+" |  D   |    1     |           |
+" |  T   |          |-----------|
+" |  r   |          |     t     |
+" |  e   |          |     e     |
+" |  e   |          |     r     |
+" |      |          |     m     |
+" -------------------------------
+" Remember that ctrl w + hjkl helps you navigate between windows
+" Call functions with :call VMain()
+function VMain()
+  NERDTreeFocus
+  wincmd l
+  vsp
+  wincmd l
+  sp
+  wincmd j
+  term
+  wincmd h
+endfunction
