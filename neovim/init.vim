@@ -327,3 +327,27 @@ function VMain()
   term
   wincmd h
 endfunction
+
+" Defines the following window structure
+" ___________________
+" |      |           |
+" |  N   |   editor  |
+" |  E   |     2     |
+" |  R   |           |
+" |  D   |           |
+" |  T   |-----------|
+" |  r   |     t     |
+" |  e   |     e     |
+" |  e   |     r     |
+" |      |     m     |
+" --------------------
+" Remember that ctrl w + hjkl helps you navigate between windows
+" Call functions with :call VMain()
+function MainHalf()
+  NERDTreeFocus
+  wincmd l
+  sp
+  wincmd j
+  term
+  wincmd h
+endfunction
