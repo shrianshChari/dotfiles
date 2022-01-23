@@ -47,7 +47,7 @@ sudo ./install.sh
 - [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
-- [Kitty](https://sw.kovidgoyal.net/kitty/)
+- [Kitty](https://sw.kovidgoyal.net/kitty/) (apt)
 - [Modern Unix Scripts:](https://github.com/ibraheemdev/modern-unix)
   - [`bat`](https://github.com/sharkdp/bat) (apt)
   - [`lsd`](https://github.com/Peltoche/lsd) (deb)
