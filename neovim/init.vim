@@ -275,6 +275,7 @@ call plug#end()
 
 " New color scheme
 source $HOME/.config/nvim/themes/onedark.vim
+colorscheme onedark
 
 " Defines the following window structure
 " ______________________________
@@ -342,7 +343,7 @@ endfunction
 " |      |     m     |
 " --------------------
 " Remember that ctrl w + hjkl helps you navigate between windows
-" Call functions with :call VMain()
+" Call functions with :call MainHalf()
 function MainHalf()
   NERDTreeFocus
   wincmd l
