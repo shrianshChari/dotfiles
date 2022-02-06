@@ -10,6 +10,9 @@ set laststatus=2
 
 :syntax enable
 
+" Fixes ability to exit terminal in Neovim
+tnoremap <Esc> <C-\><C-n>
+
 " lightline configuration
 " https://github.com/itchyny/lightline.vim
 let g:lightline = {
