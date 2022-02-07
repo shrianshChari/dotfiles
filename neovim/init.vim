@@ -7,6 +7,7 @@ set number
 set hlsearch
 set noshowmode
 set laststatus=2
+set noexpandtab
 
 :syntax enable
 
