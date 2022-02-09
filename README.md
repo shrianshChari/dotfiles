@@ -9,7 +9,10 @@
 ### Installation: ###
 ```bash
 # 1. Clone the repo into home folder
-git clone https://github.com/shrianshChari/dotfiles.git ~/.dotfiles
+git clone https://github.com/shrianshChari/dotfiles.git ~/.dotfiles # HTTPS
+
+# OR
+git clone git@github.com:shrianshChari/dotfiles.git ~/.dotfiles # SSH
 
 # 2. Navigate to the folder that contains the repo
 cd ~/.dotfiles
@@ -41,6 +44,7 @@ sudo ./install.sh
 - [x] Make the installer ask all the questions at the beginning
 - [x] Consolidate all vim config files into only one file (move `plugin.vim` into `init.vim`)
 - [ ] Figure out how to download a folder from a remote git repository (probably by downloading a zip file)
+- [ ] Add script to configure ssh key for GitHub
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
