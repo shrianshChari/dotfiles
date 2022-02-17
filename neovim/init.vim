@@ -281,6 +281,12 @@ Plug 'ryanoasis/vim-devicons'
 " kitty.conf highlighting
 Plug 'fladson/vim-kitty'
 
+" Fugitive Git integration
+Plug 'tpope/vim-fugitive'
+
+" Shows Git differences in editor
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " New color scheme
