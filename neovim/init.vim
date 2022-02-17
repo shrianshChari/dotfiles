@@ -29,7 +29,7 @@ let g:lightline = {
       \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
+      \   'gitbranch': 'FugitiveHead'
       \ }
       \ 
       \ }
@@ -245,9 +245,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " Lightline statusline
 Plug 'itchyny/lightline.vim'
-
-" Git branch name
-Plug 'itchyny/vim-gitbranch'
 
 " Discord Rich Presence
 Plug 'vimsence/vimsence'
