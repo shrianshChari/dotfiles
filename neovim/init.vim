@@ -240,6 +240,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 " File Explorer
 Plug 'scrooloose/NERDTree'
 
+" NERDTree icons
+Plug 'ryanoasis/vim-devicons'
+
+" NerdTree File icon colors
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
 
@@ -271,9 +277,6 @@ Plug 'honza/vim-snippets'
 
 " TypeScript Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" NERDTree icons
-Plug 'ryanoasis/vim-devicons'
 
 " kitty.conf highlighting
 Plug 'fladson/vim-kitty'
