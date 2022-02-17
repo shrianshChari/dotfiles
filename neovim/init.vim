@@ -14,6 +14,12 @@ set noexpandtab
 " Fixes ability to exit terminal in Neovim
 tnoremap <Esc> <C-\><C-n>
 
+" Ctrl C to copy to system clipboard
+vnoremap <C-c> "+y
+
+" Ctrl X to cut to system clipboard
+vnoremap <C-x> "+d
+
 " lightline configuration
 " https://github.com/itchyny/lightline.vim
 let g:lightline = {
@@ -356,3 +362,5 @@ function MainHalf()
   term
   wincmd h
 endfunction
+
+
