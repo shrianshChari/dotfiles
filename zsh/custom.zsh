@@ -24,3 +24,8 @@ fi
 
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
+
+if [[ -d ~/flutter/bin ]]
+then
+	export PATH=$PATH:~/flutter/bin
+fi
