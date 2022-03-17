@@ -28,4 +28,13 @@ alias :q="exit"
 if [[ -d ~/flutter/bin ]]
 then
 	export PATH=$PATH:~/flutter/bin
+	export CHROME_EXECUTABLE=`which brave-browser`
 fi
+
+if [[ -d ~/android-studio/bin ]]
+then
+	export PATH=$PATH:~/android-studio/bin
+	export PATH=$PATH:~/Android/Sdk/tools/bin
+fi
+
+export TERM=xterm-256color
