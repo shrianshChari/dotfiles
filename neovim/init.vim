@@ -1,5 +1,5 @@
 set showmatch
-set mouse=v
+set mouse=a
 set tabstop=2
 set shiftwidth=2
 set autoindent
@@ -8,6 +8,9 @@ set hlsearch
 set noshowmode
 set laststatus=2
 set noexpandtab
+
+set list
+set listchars=tab:\|\ 
 
 :syntax enable
 
@@ -287,6 +290,9 @@ Plug 'tpope/vim-fugitive'
 " Shows Git differences in editor
 Plug 'airblade/vim-gitgutter'
 
+" For Dart development
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 call plug#end()
 
 " New color scheme
