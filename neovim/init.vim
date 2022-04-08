@@ -384,10 +384,10 @@ endfunction
 function CS240(hwNum)
   set colorcolumn=81
   vsp
-  execute 'e ' . $HOME . './cs240/' .a:hwNum. '/' .a:hwNum. '.c'
+  execute 'e ' . $HOME . '/cs240/' .a:hwNum. '/' .a:hwNum. '.c'
   wincmd l
   sp
-  execute 'e ' . $HOME . './cs240/' .a:hwNum. '/' .a:hwNum. '.h'
+  execute 'e ' . $HOME . '/cs240/' .a:hwNum. '/' .a:hwNum. '.h'
   wincmd j
   term
   wincmd h
