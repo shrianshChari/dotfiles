@@ -39,6 +39,6 @@ echo "let &t_SI = \"\<esc>[5 q\"  \" blinking I-beam in insert mode" >> ~/.vimrc
 echo "let &t_SR = \"\<esc>[3 q\"  \" blinking underline in replace mode" >> ~/.vimrc
 echo "let &t_EI = \"\<esc>[ q\"  \" default cursor (usually blinking block) otherwise" >> ~/.vimrc
 
-sed -i '64,240d' ~/.vimrc
+sed -i '67,235d' ~/.vimrc
 sed -i 's/\/\.config\/nvim/\/\.vim/g' ~/.vimrc
 ```
