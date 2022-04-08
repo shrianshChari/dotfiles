@@ -378,4 +378,17 @@ function MainHalf()
   wincmd h
 endfunction
 
-
+" CS240 Work Environment (thanks Theo!)
+" You need to call it with the name of the folder, not the homework number
+" AKA run `:call CS240(hw1)`, not `:call CS240(1)`
+function CS240(hwNum)
+  set colorcolumn=81
+  vsp
+  execute 'e ' . $HOME . './cs240/' .a:hwNum. '/' .a:hwNum. '.c'
+  wincmd l
+  sp
+  execute 'e ' . $HOME . './cs240/' .a:hwNum. '/' .a:hwNum. '.h'
+  wincmd j
+  term
+  wincmd h
+endfunction
