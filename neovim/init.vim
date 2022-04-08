@@ -12,6 +12,9 @@ set noexpandtab
 set list
 set listchars=tab:\|\ 
 
+" Reveals where the 81st column is so that you don't go past it
+set colorcolumn=81
+
 :syntax enable
 
 " Fixes ability to exit terminal in Neovim
