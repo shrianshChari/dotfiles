@@ -394,5 +394,5 @@ function CS240(hwNum)
   wincmd j
   term
   wincmd h
-  7 wincmd >
+  5 wincmd >
 endfunction
