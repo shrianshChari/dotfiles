@@ -382,6 +382,8 @@ endfunction
 " You need to call it with the name of the folder, not the homework number
 " AKA run `:call CS240('hw1')`, not `:call CS240(1)`
 function CS240(hwNum)
+  NERDTreeFocus
+  wincmd l
   exec 'cd' . $HOME. '/cs240/' . a:hwNum . '/'
   set colorcolumn=81
   vsp
@@ -392,4 +394,5 @@ function CS240(hwNum)
   wincmd j
   term
   wincmd h
+  7 wincmd >
 endfunction
