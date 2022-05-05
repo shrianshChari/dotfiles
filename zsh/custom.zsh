@@ -25,16 +25,29 @@ fi
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
 
+# Flutter
 if [[ -d ~/flutter/bin ]]
 then
 	export PATH=$PATH:~/flutter/bin
 	export CHROME_EXECUTABLE=`which brave-browser`
 fi
 
+# Android Studio
 if [[ -d ~/android-studio/bin ]]
 then
 	export PATH=$PATH:~/android-studio/bin
 	export PATH=$PATH:~/Android/Sdk/tools/bin
+fi
+
+# Yarn
+if [[ -d ~/.yarn/bin ]]
+then
+	export PATH=$PATH:~/.yarn/bin
+fi
+
+if [[ -d ~/.config/yarn/global/node_modules/.bin ]]
+then
+	export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 fi
 
 export TERM=xterm-256color
