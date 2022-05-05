@@ -10,7 +10,7 @@ set laststatus=2
 set noexpandtab
 
 set list
-set listchars=tab:\|\ 
+set listchars=tab:\¦\ 
 
 " Reveals where the 81st column is so that you don't go past it
 set colorcolumn=81
@@ -296,6 +296,9 @@ Plug 'airblade/vim-gitgutter'
 " For Dart development
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+
+" Indentation markers for space indentation
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " New color scheme
