@@ -9,3 +9,5 @@
 [user]
 [core]
 	editor = vi
+[init]
+	defaultBranch = main
