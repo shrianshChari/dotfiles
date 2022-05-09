@@ -11,7 +11,7 @@ then
 fi
 
 # Alias lsd to simply ls
-if command -v batcat &> /dev/null
+if command -v lsd &> /dev/null
 then
 	alias ls="lsd"
 fi
