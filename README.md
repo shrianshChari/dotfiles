@@ -38,13 +38,12 @@ sudo ./install.sh
 - Follow [these instructions](https://gist.github.com/andrebrait/961cefe730f4a2c41f57911e6195e444) to get Keychron keyboard set up properly
 
 ### To-Do: ###
-- [x] Change script to install NVM instead of just NodeJS
 - [ ] Update Eclipse to install from snap or using their tarball
 - [ ] Test whether the snap packages work now
-- [x] Make the installer ask all the questions at the beginning
-- [x] Consolidate all vim config files into only one file (move `plugin.vim` into `init.vim`)
 - [ ] Figure out how to download a folder from a remote git repository (probably by downloading a zip file)
 - [ ] Add script to configure ssh key for GitHub
+- [ ] Separate configuration files into separate files (init.vim -> plugin.vim, config.vim, etc.)
+- [ ] Set up brew installation
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
