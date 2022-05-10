@@ -233,6 +233,16 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Presence.nvim configuration
+let g:presence_auto_update         = 1
+let g:presence_neovim_image_text   = "neovim.io"
+let g:presence_main_image          = "file"
+let g:presence_debounce_timeout    = 10
+let g:presence_enable_line_number  = 0
+let g:presence_blacklist           = []
+let g:presence_buttons             = 1
+
+
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -259,7 +269,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 
 " Discord Rich Presence
-Plug 'vimsence/vimsence'
+Plug 'andweeb/presence.nvim'
 
 " Rainbow brackets plugin
 Plug 'luochen1990/rainbow'
