@@ -22,9 +22,6 @@ then
 	export PATH=$PATH:~/anaconda3/bin
 fi
 
-# Allows me to exit zsh by typing in ':q'
-alias :q="exit"
-
 # Flutter
 if [[ -d ~/flutter/bin ]]
 then
@@ -49,5 +46,21 @@ if [[ -d ~/.config/yarn/global/node_modules/.bin ]]
 then
 	export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 fi
+
+# Brew.sh
+if [[ -d /home/linuxbrew/.linuxbrew/bin ]]
+then
+	export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
+elif [[ -d ~/.linuxbrew/bin ]]
+then
+	export PATH=$PATH:~/.linuxbrew/bin
+fi
+
+# Allows me to exit zsh by typing in ':q'
+alias :q="exit"
+
+# Allows me to open nvim by using the vi command
+alias vi="nvim"
+alias v="nvim"
 
 export TERM=xterm-256color
