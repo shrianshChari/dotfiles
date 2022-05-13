@@ -8,6 +8,6 @@
 	email = 30420527+shrianshChari@users.noreply.github.com
 [user]
 [core]
-	editor = vi
+	editor = nvim
 [init]
 	defaultBranch = main
