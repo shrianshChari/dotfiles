@@ -43,7 +43,8 @@ sudo ./install.sh
 - [ ] Figure out how to download a folder from a remote git repository (probably by downloading a zip file)
 - [ ] Add script to configure ssh key for GitHub
 - [ ] Separate configuration files into separate files (init.vim -> plugin.vim, config.vim, etc.)
-- [ ] Set up brew installation
+- [ ] Set up brew, neovim, git-delta, tree installation
+- [ ] Move more installs to brew so that I'm less dependent on apt
 
 ### Installed Packages: ###
 - [Atom](https://atom.io) (apt)
