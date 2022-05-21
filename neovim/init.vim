@@ -254,7 +254,8 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 " File Explorer
-Plug 'scrooloose/NERDTree'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " NERDTree icons
 Plug 'ryanoasis/vim-devicons'
