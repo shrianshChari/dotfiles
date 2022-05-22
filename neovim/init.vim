@@ -242,6 +242,10 @@ let g:presence_enable_line_number  = 0
 let g:presence_blacklist           = []
 let g:presence_buttons             = 1
 
+" Minimap.vim configuration
+let g:minimap_auto_start = 1
+let g:minimap_git_colors = 1
+
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -255,10 +259,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 " File Explorer
 Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" NERDTree icons
-Plug 'ryanoasis/vim-devicons'
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git symbols for NERDTree
+            \ Plug 'ryanoasis/vim-devicons' " NERDTree file icons
 
 " NerdTree File icon colors
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -310,6 +312,9 @@ Plug 'thosakwe/vim-flutter'
 
 " Indentation markers for space indentation
 Plug 'Yggdroot/indentLine'
+
+" Minimap for vim
+Plug 'wfxr/minimap.vim'
 call plug#end()
 
 " New color scheme
