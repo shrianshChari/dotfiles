@@ -47,7 +47,7 @@ sudo ./install.sh
 - [ ] Move more installs to brew so that I'm less dependent on apt
 
 ### Installed Packages: ###
-- [Atom](https://atom.io) (apt)
+- ~~[Atom](https://atom.io) (apt "Retired because of Neovim")~~
 - [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)

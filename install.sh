@@ -29,7 +29,7 @@ test_distro
 # Updating distro packages
 # May not always work, since I'm not familiar with any
 read -p 'Update packages? (Y/n) ' updatepackages
-read -p 'Install Atom? (Y/n) ' installatom
+# read -p 'Install Atom? (Y/n) ' installatom
 read -p 'Install Brave Browser? (Y/n) ' installbrave
 read -p 'Install Discord? (Y/n) ' installdiscord
 read -p 'Install Kitty? (Y/n) ' installkitty
