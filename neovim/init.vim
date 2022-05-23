@@ -249,6 +249,8 @@ let g:minimap_git_colors = 1
 " Vim Markdown config
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_math = 1
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
