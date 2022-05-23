@@ -245,6 +245,7 @@ let g:presence_buttons             = 1
 " Minimap.vim configuration
 let g:minimap_auto_start = 1
 let g:minimap_git_colors = 1
+let g:minimap_highlight_range = 1
 
 " Vim Markdown config
 let g:vim_markdown_conceal = 0
