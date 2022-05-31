@@ -36,6 +36,13 @@ then
 	export PATH=$PATH:~/Android/Sdk/tools/bin
 fi
 
+# Go 
+if [[ -d /usr/local/go/bin ]]
+then
+	export PATH=$PATH:/usr/local/go/bin
+fi
+
+
 # Yarn
 if [[ -d ~/.yarn/bin ]]
 then
