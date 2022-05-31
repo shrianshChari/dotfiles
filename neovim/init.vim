@@ -41,11 +41,6 @@ let g:lightline = {
       \ 
       \ }
 
-" Configuration for UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-" list all snippets for current filetype
-let g:UltiSnipsListSnippets="<c-l>"
-
 " NERDTree configuration
 let NERDTreeShowHidden=1
 nnoremap n :NERDTreeFocus<CR>
@@ -267,7 +262,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 " File Explorer
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git symbols for NERDTree
-            \ Plug 'ryanoasis/vim-devicons' " NERDTree file icons
+
+Plug 'ryanoasis/vim-devicons' " NERDTree file icons
 
 " NerdTree File icon colors
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -290,16 +286,6 @@ Plug 'joshdick/onedark.vim'
 
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
-
-" Proper Java Syntax
-Plug 'uiiaoo/java-syntax.vim'
-
-" Snippet engine to enable vim-snippets
-Plug 'SirVer/ultisnips'
- 
-" Bunch of snippets (Show with Ctrl-L)
-" https://github.com/honza/vim-snippets
-Plug 'honza/vim-snippets'
 
 " TypeScript Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
