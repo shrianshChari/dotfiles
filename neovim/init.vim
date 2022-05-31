@@ -1,21 +1,22 @@
-set showmatch
-set mouse=a
-set tabstop=2
-set shiftwidth=2
-set autoindent
-set number
-set hlsearch
-set noshowmode
-set laststatus=2
-set noexpandtab
+set showmatch " Briefly jumps to matching bracket
+set mouse=a " Can click around w/ mouse
+set tabstop=2 " # of spaces that a tab is
+set shiftwidth=2 " # of spaces for each step of autoindent
+set autoindent " Take indentation from prev line in new line
+set number " Line numbers
+set hlsearch " Highlights all matches when searching
+set noshowmode " Don't need to show mode bc statusline
+set laststatus=2 " Always show statusline
+set noexpandtab " Don't insert spaces when you press tab
 
-set list
+" Set what characters each tab will look like
 set listchars=tab:\¦\ 
+set list " Display tab characters
 
 " Reveals where the 81st column is so that you don't go past it
 set colorcolumn=81
 
-:syntax enable
+:syntax enable " Enable syntax highlighting
 
 " Fixes ability to exit terminal in Neovim
 tnoremap <Esc> <C-\><C-n>
