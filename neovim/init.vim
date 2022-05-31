@@ -241,7 +241,7 @@ let g:presence_main_image          = "file"
 let g:presence_debounce_timeout    = 10
 let g:presence_enable_line_number  = 0
 let g:presence_blacklist           = []
-let g:presence_buttons             = 1
+let g:presence_buttons             = 0
 
 " Minimap.vim configuration
 let g:minimap_auto_start = 1
