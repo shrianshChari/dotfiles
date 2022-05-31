@@ -259,14 +259,10 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-" File Explorer
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git symbols for NERDTree
-
+Plug 'preservim/nerdtree' " File Explorer
+Plug 'Xuyuanp/nerdtree-git-plugin' " Git symbols for NERDTree
 Plug 'ryanoasis/vim-devicons' " NERDTree file icons
-
-" NerdTree File icon colors
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree File icon colors
 
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
