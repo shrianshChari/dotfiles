@@ -10,7 +10,7 @@ set laststatus=2 " Always show statusline
 set noexpandtab " Don't insert spaces when you press tab
 
 " Set what characters each tab will look like
-set listchars=tab:\¦\ 
+set listchars=tab:\\ 
 set list " Display tab characters
 
 " Reveals where the 81st column is so that you don't go past it
