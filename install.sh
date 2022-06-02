@@ -10,6 +10,7 @@
 
 UPDATE_PACKAGES="sudo apt update"
 MANAGER_INSTALL="apt install"
+DEB_INSTALL="dpkg -i"
 
 # Funny big text thanks to figlet
 echo "         __         _                  __    ________               _ "
@@ -24,10 +25,6 @@ echo " / __  / __ \/ __/ /_/ / / _ \/ ___/"
 echo "/ /_/ / /_/ / /_/ __/ / /  __(__  ) "
 echo "\__,_/\____/\__/_/ /_/_/\___/____/  "
 
-test_distro
-
-# Updating distro packages
-# May not always work, since I'm not familiar with any
 read -p 'Update packages? (Y/n) ' updatepackages
 # read -p 'Install Atom? (Y/n) ' installatom
 read -p 'Install Brave Browser? (Y/n) ' installbrave
@@ -35,7 +32,7 @@ read -p 'Install Discord? (Y/n) ' installdiscord
 read -p 'Install Kitty? (Y/n) ' installkitty
 read -p 'Install Modern Unix scripts? (Y/n) ' installmu
 read -p 'Install Neofetch? (Y/n) ' installneofetch
-read -p 'Install Neovim? (Y/n) ' installneovim
+read -p 'Install Vim/Neovim? (Y/n) ' installvimnvim
 read -p 'Install NVM? (Y/n) ' installnode
 read -p 'Install Steam? (Y/n) ' installsteam
 # read -p 'Install Tilix? (Y/n) ' installtilix
@@ -43,94 +40,103 @@ read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 read -p 'Install zsh? (Y/n) ' installzsh
 
 if [[ $updatepackages == 'Y' || $updatepackages == 'y' ]]; then
-  echo 'Updating packages...'
-  $UPDATE_PACKAGES
+	echo 'Updating packages...'
+	$UPDATE_PACKAGES
 else
-  echo 'Skipping updating packages...'
+	echo 'Skipping updating packages...'
 fi
 
 # Atom
 if [ $installatom == 'Y' || $installatom == 'y' ]
 then
-  echo 'Installing Atom...'
-  sudo ${MANAGER_INSTALL} atom -y
-  python3 atom/install.py
+	echo 'Installing Atom...'
+	sudo ${MANAGER_INSTALL} atom -y
+	python3 atom/install.py
 
-  # symlink for config.cson
-  rm ~/.atom/config.cson
-  ln -s ~/.dotfiles/atom/config.cson ~/.atom/config.cson
-  echo "Atom config.cson symlink complete!"
+	# symlink for config.cson
+	rm $HOME/.atom/config.cson
+	ln -s $HOME/.dotfiles/atom/config.cson $HOME/.atom/config.cson
+	echo "Atom config.cson symlink complete!"
 
-  if [[ -d "~/.atom/packages/script/lib/grammars" ]]; then
+	if [[ -d "$HOME/.atom/packages/script/lib/grammars" ]]; then
 
-    cp ~/.dotfiles/atom/python.js ~/.atom/packages/script/lib/grammars
-  fi
+		cp $HOME/.dotfiles/atom/python.js $HOME/.atom/packages/script/lib/grammars
+	fi
 else
-  echo 'Skipping Atom install.'
+	echo 'Skipping Atom install.'
 fi
 
 # Brave Browser
 if [ $installbrave == 'Y' || $installbrave == 'y' ]
 then
-  echo 'Installing Brave Browser...'
-  sudo apt install apt-transport-https curl
-  sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-  echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-  sudo apt update
-  sudo ${MANAGER_INSTALL} brave-browser -y
+	echo 'Installing Brave Browser...'
+	sudo apt install apt-transport-https curl
+	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+	sudo apt update
+	sudo ${MANAGER_INSTALL} brave-browser -y
 else
-  echo 'Skipping Brave Browser install.'
+	echo 'Skipping Brave Browser install.'
 fi
 
 # Discord
 if [ $installdiscord == 'Y' || $installdiscord == 'y' ]
 then
-  echo 'Installing Discord...'
-  sudo ${MANAGER_INSTALL} discord -y
+	echo 'Installing Discord...'
+	sudo ${MANAGER_INSTALL} discord -y
 else
-  echo 'Skipping Discord install.'
+	echo 'Skipping Discord install.'
 fi
 
 # Eclipse
 # read -p 'Install Eclipse? (Y/n) ' installeclipse
 if [ $installeclipse == 'Y' || $installeclipse == 'y' ]
 then
-  echo 'Installing Eclipse...'
-  sudo ${MANAGER_INSTALL} eclipse -y
+	echo 'Installing Eclipse...'
+	sudo ${MANAGER_INSTALL} eclipse -y
 else
-  echo 'Skipping Eclipse install.'
+	echo 'Skipping Eclipse install.'
 fi
 
 # Kitty
 if [ $installkitty == 'Y' || $installkitty == 'y']
 then
-  echo 'Installing Kitty...'
-  sudo ${MANAGER_INSTALL} kitty -y
-  sudo update-alternatives --config x-terminal-emulator
+	echo 'Installing Kitty...'
+	sudo ${MANAGER_INSTALL} kitty -y
+	sudo update-alternatives --config x-terminal-emulator
 
-  mkdir ~/.config/kitty/
+	mkdir $HOME/.config/kitty/
 
-  ln -s ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+	ln -s $HOME/.dotfiles/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 else
-  echo 'Skipping Kitty install.'
+	echo 'Skipping Kitty install.'
 fi
 
 # Modern Unix
 if [ $installmu == 'Y' || $installmu == 'y']
 then
-  echo 'Installing Modern Unix...'
+	echo 'Installing Modern Unix...'
 
-  # bat
-  sudo ${MANAGER_INSTALL} bat -y
+	# bat
+	sudo ${MANAGER_INSTALL} bat -y
 
-  # lsd
-  wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
-  chmod +x lsd_0.20.1_amd64.deb
-  sudo dpkg -i lsd_0.20.1_amd64.deb
-  rm lsd_0.20.1_amd64.deb
+	# git-delta
+	wget https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb
+	sudo ${DEB_INSTALL} ./git-delta_0.13.0_amd64.deb
+	rm git-delta_0.13.0_amd64.deb
 
+	# htop
+	sudo ${MANAGER_INSTALL} htop -y
+		
+	# lsd
+	wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
+	sudo ${DEB_INSTALL} ./lsd_0.20.1_amd64.deb
+	rm lsd_0.20.1_amd64.deb
+
+	# tree
+	sudo ${MANAGER_INSTALL} tree -y
 else
-  echo 'Skipping Modern Unix install.'
+	echo 'Skipping Modern Unix install.'
 fi
 
 
@@ -147,212 +153,247 @@ fi
 # Neofetch
 if [ $installneofetch == 'Y' || $installneofetch == 'y' ]
 then
-  echo 'Installing Neofetch...'
-  sudo ${MANAGER_INSTALL} neofetch -y
+	echo 'Installing Neofetch...'
+
+	sudo ${MANAGER_INSTALL} neofetch -y
 else
-  echo 'Skipping Neofetch install.'
+	echo 'Skipping Neofetch install.'
 fi
 
 # Neovim
-if [[ $installneovim == 'Y' || $installneovim == 'y' ]]; then
-  echo 'Installing Neovim...'
-  sudo ${MANAGER_INSTALL} neovim -y
+if [ $installvimnvim == 'Y' || $installvimnvim == 'y' ]
+then
+	read -p 'Install Neovim? (Y/n) ' installneovim
 
-  # symlink for init.vim
-  if [ ! -d "~/.config/nvim" ]; then
-    # mkdir ~/.config/nvim
-    echo "Folder doesn't exist"
-  fi
+	if [[ $installneovim == 'Y' || $installneovim == 'y' ]]; then
+		echo 'Installing Neovim...'
 
-  if [ -f "~/.config/nvim/init.vim" ]; then
-    rm ~/.config/nvim/init.vim
-  fi
-  ln -s ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
-  ln -s ~/.dotfiles/neovim/snippets ~/.config/nvim/snippets
+		# Install code-minimap
+		wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap_0.6.4_arm64.deb
 
-  # Installing vim-plug autoloader
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		sudo ${DEB_INSTALL} ./code-minimap_0.6.4_arm64.deb
+		rm code-minimap_0.6.4_arm64.deb
 
-  if [ -e "~/.config/nvim/vim-plug" ]; then
-    rm -rf ~/.config/nvim/vim-plug
-  fi
-  ln -s ~/.dotfiles/neovim/vim-plug ~/.config/nvim/vim-plug
+		wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+		sudo ${DEB_INSTALL} ./nvim-linux64.deb
+		rm nvim-linux64.deb
 
-  if [ -f "~/.vimrc" ]; then
-    rm ~/.vimrc
-  fi
-  ln -s ~/.dotfiles/neovim/vimrc ~/.vimrc
+		if [ ! -d "$HOME/.config/nvim" ]; then
+			mkdir $HOME/.config/nvim
+			echo "Nvim folder created"
+		fi
 
-  if [ -d "~/.config/nvim/themes" ]; then
-    rm -rf ~/.config/nvim/themes
-  fi
-  ln -s ~/.dotfiles/neovim/themes ~/.config/nvim/themes
+		# symlink for init.lua
+		if [ -f "$HOME/.config/nvim/init.vim" ]; then
+			rm $HOME/.config/nvim/init.vim
+		fi
+		ln -s $HOME/.dotfiles/neovim/init.lua $HOME/.config/nvim/
 
-  echo "Neovim symlinks created!"
-  echo "Be sure to run :PlugStatus when you open Neovim!"
+		ln -s $HOME/.dotfiles/neovim/lua $HOME/.config/nvim/
+		
+		# Packer.nvim
+		git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+			~/.local/share/nvim/site/pack/packer/start/packer.nvim
+	else
+		echo 'Installing vim...'
+
+		# Install code-minimap
+		wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap_0.6.4_arm64.deb
+
+		sudo ${DEB_INSTALL} ./code-minimap_0.6.4_arm64.deb
+		rm code-minimap_0.6.4_arm64.deb
+
+		sudo ${MANAGER_INSTALL} vim -y
+
+		# Installing vim-plug autoloader
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+		if [ -f "$HOME/.vimrc" ]; then
+			rm $HOME/.vimrc
+		fi
+		ln -s $HOME/.dotfiles/vim/init.vim $HOME/.vimrc
+
+		if [ ! -d "$HOME/.vim" ]; then
+			mkdir $HOME/.vim
+			echo "Vim folder created"
+		fi
+		ln -s $HOME/.dotfiles/vim/config $HOME/.vim/
+
+		echo "Vim symlinks created!"
+		echo "Be sure to run \"vim -c 'PlugInstall'\" when first opening Vim!"
+	fi
 else
-  echo 'Skipping Neovim install...'
+	echo "Skpping editor install"
 fi
+
 
 # NVM
 if [ $installnode == 'Y' || $installnode == 'y' ]
 then
-  echo 'Installing NVM...'
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-  nvm install node
+	echo 'Installing NVM...'
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+	nvm install node
 else
-  echo 'Skipping NVM install.'
+	echo 'Skipping NVM install.'
 fi
 
 # Steam
 if [ $installsteam == 'Y' || $installsteam == 'y' ]
 then
-  echo 'Installing Steam...'
-  sudo ${MANAGER_INSTALL} steam -y
+	echo 'Installing Steam...'
+	sudo ${MANAGER_INSTALL} steam -y
 else
-  echo 'Skipping Steam install.'
+	echo 'Skipping Steam install.'
 fi
 
 # Tilix
 if [ $installtilix == 'Y' || $installtilix == 'y' ]
 then
-  echo 'Installing Tilix...'
-  sudo ${MANAGER_INSTALL} tilix -y
-  sudo update-alternatives --config x-terminal-emulator
+	echo 'Installing Tilix...'
+	sudo ${MANAGER_INSTALL} tilix -y
+	sudo update-alternatives --config x-terminal-emulator
 else
-  echo 'Skipping Tilix install.'
+	echo 'Skipping Tilix install.'
 fi
 
 # GNOME Tweaks
 if [ $installtweaks == 'Y' || $installtweaks == 'y' ]
 then
-  echo 'Installing GNOME Tweaks...'
-  sudo ${MANAGER_INSTALL} gnome-tweaks -y
+	echo 'Installing GNOME Tweaks...'
+	sudo ${MANAGER_INSTALL} gnome-tweaks -y
 else
-  echo 'Skipping GNOME Tweaks install.'
+	echo 'Skipping GNOME Tweaks install.'
 fi
 
 if [ ! command -v snap &> /dev/null ]; then
-  # Snap
-  read -p 'Install snap? (Y/n) ' installsnap
-  if [ $installsnap == 'Y' || $installsnap == 'y' ]; then
-    sudo $MANAGER_INSTALL snapd
-  fi
+	# Snap
+	read -p 'Install snap? (Y/n) ' installsnap
+	if [ $installsnap == 'Y' || $installsnap == 'y' ]; then
+		sudo $MANAGER_INSTALL snapd
+	fi
 
-  if [ ! command -v snap &> /dev/null ]; then
-    # Slack
-    read -p 'Install Slack? (Y/n) ' installslack
-    if [ $installslack == 'Y' || $installslack == 'y' ]
-    then
-      echo 'Installing Slack...'
-      sudo snap install slack
-    else
-      echo 'Skipping Slack install.'
-    fi
+	if [ ! command -v snap &> /dev/null ]; then
+		# Slack
+		read -p 'Install Slack? (Y/n) ' installslack
+		if [ $installslack == 'Y' || $installslack == 'y' ]
+		then
+			echo 'Installing Slack...'
+			sudo snap install slack
+		else
+			echo 'Skipping Slack install.'
+		fi
 
-    # Bitwarden
-    read -p 'Install Bitwarden? (Y/n) ' installbitwarden
-    if [ $installbitwarden == 'Y' || $installbitwarden == 'y' ]
-    then
-      echo 'Installing Bitwarden...'
-      sudo snap install bitwarden
-    else
-      echo 'Skipping Bitwarden install.'
-    fi
+		# Bitwarden
+		read -p 'Install Bitwarden? (Y/n) ' installbitwarden
+		if [ $installbitwarden == 'Y' || $installbitwarden == 'y' ]
+		then
+			echo 'Installing Bitwarden...'
+			sudo snap install bitwarden
+		else
+			echo 'Skipping Bitwarden install.'
+		fi
 
-    # FromScratch
-    read -p 'Install FromScratch? (Y/n) ' installfromscratch
-    if [ $installfromscratch == 'Y' || $installfromscratch == 'y' ]
-    then
-      echo 'Installing FromScratch...'
-      sudo snap install fromscratch
-    else
-      echo 'Skipping FromScratch install.'
-    fi
-  fi
+		# FromScratch
+		read -p 'Install FromScratch? (Y/n) ' installfromscratch
+		if [ $installfromscratch == 'Y' || $installfromscratch == 'y' ]
+		then
+			echo 'Installing FromScratch...'
+			sudo snap install fromscratch
+		else
+			echo 'Skipping FromScratch install.'
+		fi
+	fi
 
-  # Zoom
-  read -p 'Install Zoom? (Y/n) ' installzoom
-  if [ $installzoom == 'Y' || $installzoom == 'y' ]
-  then
-    echo 'Installing Zoom...'
-    sudo snap install zoom
-  else
-    echo 'Skipping Zoom install.'
-  fi
+	# Zoom
+	read -p 'Install Zoom? (Y/n) ' installzoom
+	if [ $installzoom == 'Y' || $installzoom == 'y' ]
+	then
+		echo 'Installing Zoom...'
+		sudo snap install zoom
+	else
+		echo 'Skipping Zoom install.'
+	fi
 fi
 
 
 # symlink for gitconfig
-rm ~/.gitconfig
-ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
+rm $HOME/.gitconfig
+ln -s $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
 echo "gitconfig symlink complete!"
 
 # installation of zsh, symlink for zsh/bash config files
 if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
-  echo "Using zsh..."
+	echo "Using zsh..."
 
-  # Installation of zsh
-  sudo ${MANAGER_INSTALL} zsh
+	# Installation of zsh
+	sudo ${MANAGER_INSTALL} zsh -y
 
-  # Installation of oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+	# Installation of oh-my-zsh
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 
-  # zsh syntax highlighting
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	# zsh syntax highlighting
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-  # Powerlevel10k
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	# Powerlevel10k
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-  # Install Nerd Font for Vim-Devicons and Powerlevel10k
-  wget -P ~/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
+	# Install Nerd Font for Vim-Devicons and Powerlevel10k
+	wget -P $HOME/.local/share/fonts/ \ # Regular
+		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
+	wget -P $HOME/.local/share/fonts/ \ # Italic
+		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
+	wget -P $HOME/.local/share/fonts/ \ # Bold
+		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+	wget -P $HOME/.local/share/fonts/ \ # Bold Italic
+		https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DejaVuSansMono/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
 
-  ln -s ~/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh
-  ln -s ~/.dotfiles/zsh/custom.zsh ~/.ohmyzsh/custom/
+	ln -s $HOME/.dotfiles/zsh/p10k.zsh $HOME/.p10k.zsh
+	ln -s $HOME/.dotfiles/zsh/custom.zsh $HOME/.ohmyzsh/custom/
 
-  # Changing default shell
-  chsh -s $(which zsh)
+	# Changing default shell
+	chsh -s $(which zsh)
 
-  # Compatitbility with Tilix
-  if [[ $installtilix == 'Y' ]]; then
-    # symlink for .zshrc
-    sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-    rm ~/.zshrc
-    ln -s ~/.dotfiles/zsh/zshrctilix ~/.zshrc
-    echo "zshrc symlink complete!"
-  else
-    # symlink for .zshrc
-    rm ~/.zshrc
-    ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
-    echo "zshrc symlink complete!"
-  fi
+	# Compatitbility with Tilix
+	if [[ $installtilix == 'Y' ]]; then
+		# symlink for .zshrc
+		sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+		rm $HOME/.zshrc
+		ln -s $HOME/.dotfiles/zsh/zshrctilix $HOME/.zshrc
+		echo "zshrc symlink complete!"
+	else
+		# symlink for .zshrc
+		rm $HOME/.zshrc
+		ln -s $HOME/.dotfiles/zsh/zshrc $HOME/.zshrc
+		echo "zshrc symlink complete!"
+	fi
 else
-  echo "Using bash..."
+	echo "Using bash..."
 
-  # Compatitbility with Tilix
-  if [[ $installtilix ]]; then
-    # symlink for bashrc
-    sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-    rm ~/.bashrc
-    ln -s ~/.dotfiles/bash/bashrctilix ~/.bashrc
-    echo "bashrc symlink complete!"
-  else
-    # symlink for bashrc
-    rm ~/.bashrc
-    ln -s ~/.dotfiles/bash/bashrc ~/.bashrc
-    echo "bashrc symlink complete!"
-  fi
+	# Compatitbility with Tilix
+	if [[ $installtilix ]]; then
+		# symlink for bashrc
+		sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+		rm $HOME/.bashrc
+		ln -s $HOME/.dotfiles/bash/bashrctilix $HOME/.bashrc
+		echo "bashrc symlink complete!"
+	else
+		# symlink for bashrc
+		rm $HOME/.bashrc
+		ln -s $HOME/.dotfiles/bash/bashrc $HOME/.bashrc
+		echo "bashrc symlink complete!"
+	fi
 
-  if [ -e "~/.bash_profile" ];
-  then
-    # symlink for bash_profile
-    rm ~/.bash_profile
-    ln -s ~/.dotfiles/bash/profile ~/.bash_profile
-    echo "bash_profile symlink complete!"
-  else
-    # symlink for profile
-    rm ~/.profile
-    ln -s ~/.dotfiles/bash/profile ~/.profile
-    echo "profile symlink complete!"
-  fi
+	if [ -e "$HOME/.bash_profile" ];
+	then
+		# symlink for bash_profile
+		rm $HOME/.bash_profile
+		ln -s $HOME/.dotfiles/bash/profile $HOME/.bash_profile
+		echo "bash_profile symlink complete!"
+	else
+		# symlink for profile
+		rm $HOME/.profile
+		ln -s $HOME/.dotfiles/bash/profile $HOME/.profile
+		echo "profile symlink complete!"
+	fi
 fi
