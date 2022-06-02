@@ -54,20 +54,14 @@ then
 	export PATH=$PATH:~/.config/yarn/global/node_modules/.bin
 fi
 
-# Brew.sh
-if [[ -d /home/linuxbrew/.linuxbrew/bin ]]
+# Allows me to open nvim by using the nv command
+if command -v nvim &> /dev/null
 then
-	export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin
-elif [[ -d ~/.linuxbrew/bin ]]
-then
-	export PATH=$PATH:~/.linuxbrew/bin
+	alias nv="nvim"
+	alias v="nvim"
 fi
 
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
-
-# Allows me to open nvim by using the nv command
-alias nv="nvim"
-alias v="nvim"
 
 export TERM=xterm-256color
