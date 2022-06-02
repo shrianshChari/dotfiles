@@ -118,10 +118,10 @@ source $ZSH/oh-my-zsh.sh
 # Simple way to suspend computer from command line
 alias suspend="systemctl suspend"
 
-# Open vimrc or zshrc within vi from anywhere
-alias vimrc="vi ~/.vimrc"
-alias zshrc="vi ~/.zshrc"
-alias gitconfig="vi ~/.gitconfig"
+# Open vimrc or zshrc within nvim from anywhere
+alias vimrc="nvim ~/.vimrc"
+alias zshrc="nvim ~/.zshrc"
+alias gitconfig="nvim ~/.gitconfig"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

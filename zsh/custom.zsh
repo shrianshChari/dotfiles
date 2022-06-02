@@ -66,8 +66,8 @@ fi
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
 
-# Allows me to open nvim by using the vi command
-alias vi="nvim"
+# Allows me to open nvim by using the nv command
+alias nv="nvim"
 alias v="nvim"
 
 export TERM=xterm-256color
