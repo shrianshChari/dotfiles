@@ -42,21 +42,24 @@ sudo ./install.sh
 - [ ] Test whether the snap packages work now
 - [ ] Figure out how to download a folder from a remote git repository (probably by downloading a zip file)
 - [ ] Add script to configure ssh key for GitHub
-- [ ] Separate configuration files into separate files (init.vim -> plugin.vim, config.vim, etc.)
-- [ ] Set up brew, neovim, git-delta, tree installation
-- [ ] Move more installs to brew so that I'm less dependent on apt
+- [x] Separate configuration files into separate files (init.vim -> plugin.vim, config.vim, etc.)
+- [x] Set up ~~brew~~, neovim, git-delta, tree installation
+- [ ] ~~Move more installs to brew so that I'm less dependent on apt~~
 - [ ] Finish migrating to init.lua (namely LSP client)
-- [ ] Install all the Nerd fonts in one go from install script
+- [x] Install all the Nerd fonts in one go from install script
 
 ### Installed Packages: ###
-- ~~[Atom](https://atom.io) (apt "Retired because of Neovim")~~
+- ~~[Atom](https://atom.io "Retired because of Neovim") (apt)~~
 - [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
 - [Kitty](https://sw.kovidgoyal.net/kitty/) (apt)
 - [Modern Unix Scripts:](https://github.com/ibraheemdev/modern-unix)
   - [`bat`](https://github.com/sharkdp/bat) (apt)
+  - [`delta`](https://github.com/dandavison/delta) (deb)
+  - [`htop`](https://htop.dev/) (apt)
   - [`lsd`](https://github.com/Peltoche/lsd) (deb)
+  - [`tree`](http://mama.indstate.edu/users/ice/tree/) (apt)
 - ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
 - [Neovim](https://neovim.io "Configuration now supports regular vi") and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
