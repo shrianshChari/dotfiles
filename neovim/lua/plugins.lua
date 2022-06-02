@@ -28,7 +28,10 @@ require('packer').startup(function()
 	-- Lualine statusline
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+		requires = {
+			'kyazdani42/nvim-web-devicons',
+			opt = true
+		}
 	}
 
 	-- Discord Rich Presence
@@ -61,7 +64,7 @@ require('packer').startup(function()
 	use 'wfxr/minimap.vim'
 
 	require('onedark').setup {
-		style = 'deep'
+		style = 'darker'
 	}
 	require('onedark').load()
 
