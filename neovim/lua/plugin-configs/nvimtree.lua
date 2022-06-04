@@ -9,5 +9,4 @@ nmap('<C-n>', ':NvimTreeToggle<CR>', {}) -- Toggle NvimTree
 require('nvim-tree').setup {
 		hijack_cursor = true,
 		create_in_closed_folder = true,
-		open_on_setup = true,
 	}
