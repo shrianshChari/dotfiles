@@ -21,8 +21,6 @@ opt.expandtab = false -- Don't insert spaces when you press tab
 
 opt.list = true -- Display tab characters
 
-opt.listchars:append({ tab = " " }) -- Set what characters each tab will look like
-
 opt.colorcolumn = '81' -- Reveals 81st column so that you don't go past it
 
 vim.cmd('syntax enable') -- Enable syntax highlighting

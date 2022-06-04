@@ -68,7 +68,7 @@ require('packer').startup(function()
 	}
 
 	-- Indentation markers for space indentation
-	use 'Yggdroot/indentLine'
+	use 'lukas-reineke/indent-blankline.nvim'
 
 	-- Minimap for vim
 	-- use 'wfxr/minimap.vim'
@@ -81,9 +81,10 @@ require('packer').startup(function()
 end)
 
 -- Call plugin configurations
+require('plugin-configs.coc')
+require('plugin-configs.indentblankline')
 require('plugin-configs.lualine')
 require('plugin-configs.markdown')
 require('plugin-configs.minimap')
 require('plugin-configs.nvimtree')
 require('plugin-configs.presence-nvim')
-require('plugin-configs.coc')
