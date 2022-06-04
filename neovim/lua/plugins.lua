@@ -45,6 +45,10 @@ require('packer').startup(function()
 
 	-- Intellisense with LSP
 	-- use 'neovim/nvim-lspconfig'
+	use {
+		'neoclide/coc.nvim',
+		branch = 'release'
+	}
 
 	-- Better syntax support
 	use 'sheerun/vim-polyglot'
@@ -82,3 +86,4 @@ require('plugin-configs.markdown')
 require('plugin-configs.minimap')
 require('plugin-configs.nvimtree')
 require('plugin-configs.presence-nvim')
+require('plugin-configs.coc')

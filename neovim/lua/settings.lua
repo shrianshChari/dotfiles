@@ -15,7 +15,7 @@ opt.hlsearch = true -- Highlights all matches when searching
 
 opt.showmode = false -- Don't need to show mode bc statusline
 
-opt.laststatus = 2 -- Always show statusline
+opt.laststatus = 3 -- Always show statusline, but for current window
 
 opt.expandtab = false -- Don't insert spaces when you press tab
 
