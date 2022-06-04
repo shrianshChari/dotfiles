@@ -33,9 +33,6 @@ Plug 'joshdick/onedark.vim'
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
 
-" TypeScript Intellisense
-Plug 'dense-analysis/ale'
-
 " kitty.conf highlighting
 Plug 'fladson/vim-kitty'
 
@@ -49,6 +46,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
 
 " Minimap for vim
-Plug 'wfxr/minimap.vim'
+" Plug 'wfxr/minimap.vim'
 call plug#end()
 

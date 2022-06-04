@@ -14,9 +14,12 @@ end
 require('packer').startup(function()
 	use 'wbthomason/packer.nvim' -- Le package manager
 
+	-- File Explorer
 	use {
-
-  	'kyazdani42/nvim-tree.lua',
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons', -- File icons
+		},
 	}
 
 	-- Color scheme
@@ -29,7 +32,7 @@ require('packer').startup(function()
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = {
-			'kyazdani42/nvim-web-devicons',
+			'kyazdani42/nvim-web-devicons', -- File icons
 			opt = true
 		}
 	}
@@ -42,6 +45,9 @@ require('packer').startup(function()
 
 	-- Intellisense with LSP
 	-- use 'neovim/nvim-lspconfig'
+
+	-- Better syntax support
+	use 'sheerun/vim-polyglot'
 
 	-- kitty.conf highlighting
 	use 'fladson/vim-kitty'
@@ -61,7 +67,7 @@ require('packer').startup(function()
 	use 'Yggdroot/indentLine'
 
 	-- Minimap for vim
-	use 'wfxr/minimap.vim'
+	-- use 'wfxr/minimap.vim'
 
 	require('onedark').setup {
 		style = 'darker'
