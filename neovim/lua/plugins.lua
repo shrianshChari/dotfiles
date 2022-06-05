@@ -72,17 +72,12 @@ require('packer').startup(function()
 
 	-- Minimap for vim
 	-- use 'wfxr/minimap.vim'
-
-	require('onedark').setup {
-		style = 'darker'
-	}
-	require('onedark').load()
-
 end)
 
 -- Call plugin configurations
 require('plugin-configs.coc')
 require('plugin-configs.indentblankline')
+require('plugin-configs.onedark')
 require('plugin-configs.lualine')
 require('plugin-configs.markdown')
 require('plugin-configs.minimap')
