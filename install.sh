@@ -47,8 +47,7 @@ else
 fi
 
 # Atom
-if [ $installatom == 'Y' || $installatom == 'y' ]
-then
+if [[ $installatom == 'Y' || $installatom == 'y' ]]; then
 	echo 'Installing Atom...'
 	sudo ${MANAGER_INSTALL} atom -y
 	python3 atom/install.py
@@ -67,8 +66,7 @@ else
 fi
 
 # Brave Browser
-if [ $installbrave == 'Y' || $installbrave == 'y' ]
-then
+if [[ $installbrave == 'Y' || $installbrave == 'y' ]]; then
 	echo 'Installing Brave Browser...'
 	sudo apt install apt-transport-https curl
 	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -80,8 +78,7 @@ else
 fi
 
 # Discord
-if [ $installdiscord == 'Y' || $installdiscord == 'y' ]
-then
+if [[ $installdiscord == 'Y' || $installdiscord == 'y' ]]; then
 	echo 'Installing Discord...'
 	sudo ${MANAGER_INSTALL} discord -y
 else
@@ -90,8 +87,7 @@ fi
 
 # Eclipse
 # read -p 'Install Eclipse? (Y/n) ' installeclipse
-if [ $installeclipse == 'Y' || $installeclipse == 'y' ]
-then
+if [[ $installeclipse == 'Y' || $installeclipse == 'y' ]]; then
 	echo 'Installing Eclipse...'
 	sudo ${MANAGER_INSTALL} eclipse -y
 else
@@ -99,8 +95,7 @@ else
 fi
 
 # Kitty
-if [ $installkitty == 'Y' || $installkitty == 'y']
-then
+if [[ $installkitty == 'Y' || $installkitty == 'y' ]]; then
 	echo 'Installing Kitty...'
 	sudo ${MANAGER_INSTALL} kitty -y
 	sudo update-alternatives --config x-terminal-emulator
@@ -113,8 +108,7 @@ else
 fi
 
 # Modern Unix
-if [ $installmu == 'Y' || $installmu == 'y']
-then
+if [[ $installmu == 'Y' || $installmu == 'y' ]]; then
 	echo 'Installing Modern Unix...'
 
 	# bat
@@ -151,8 +145,7 @@ fi
 # fi
 
 # Neofetch
-if [ $installneofetch == 'Y' || $installneofetch == 'y' ]
-then
+if [[ $installneofetch == 'Y' || $installneofetch == 'y' ]]; then
 	echo 'Installing Neofetch...'
 
 	sudo ${MANAGER_INSTALL} neofetch -y
@@ -161,8 +154,7 @@ else
 fi
 
 # Neovim
-if [ $installvimnvim == 'Y' || $installvimnvim == 'y' ]
-then
+if [[ $installvimnvim == 'Y' || $installvimnvim == 'y' ]]; then
 	read -p 'Install Neovim? (Y/n) ' installneovim
 
 	if [[ $installneovim == 'Y' || $installneovim == 'y' ]]; then
@@ -229,8 +221,7 @@ fi
 
 
 # NVM
-if [ $installnode == 'Y' || $installnode == 'y' ]
-then
+if [[ $installnode == 'Y' || $installnode == 'y' ]]; then
 	echo 'Installing NVM...'
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 	nvm install node
@@ -239,8 +230,7 @@ else
 fi
 
 # Steam
-if [ $installsteam == 'Y' || $installsteam == 'y' ]
-then
+if [[ $installsteam == 'Y' || $installsteam == 'y' ]]; then
 	echo 'Installing Steam...'
 	sudo ${MANAGER_INSTALL} steam -y
 else
@@ -248,8 +238,7 @@ else
 fi
 
 # Tilix
-if [ $installtilix == 'Y' || $installtilix == 'y' ]
-then
+if [[ $installtilix == 'Y' || $installtilix == 'y' ]]; then
 	echo 'Installing Tilix...'
 	sudo ${MANAGER_INSTALL} tilix -y
 	sudo update-alternatives --config x-terminal-emulator
@@ -258,8 +247,7 @@ else
 fi
 
 # GNOME Tweaks
-if [ $installtweaks == 'Y' || $installtweaks == 'y' ]
-then
+if [[ $installtweaks == 'Y' || $installtweaks == 'y' ]]; then
 	echo 'Installing GNOME Tweaks...'
 	sudo ${MANAGER_INSTALL} gnome-tweaks -y
 else
