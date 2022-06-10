@@ -326,18 +326,17 @@ if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
 	# Powerlevel10k
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+	# Create fonts dir if they don't exist
+	mkdir -p ~/.local/share/fonts
+
 	# Install Nerd Font for Vim-Devicons and Powerlevel10k
-	wget -P $HOME/.local/share/fonts/ \ # Regular
-		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
-	wget -P $HOME/.local/share/fonts/ \ # Italic
-		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
-	wget -P $HOME/.local/share/fonts/ \ # Bold
-		https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-	wget -P $HOME/.local/share/fonts/ \ # Bold Italic
-		https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DejaVuSansMono/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
+	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
+	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
+	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DejaVuSansMono/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
 
 	ln -s $HOME/.dotfiles/zsh/p10k.zsh $HOME/.p10k.zsh
-	ln -s $HOME/.dotfiles/zsh/custom.zsh $HOME/.ohmyzsh/custom/
+	ln -s $HOME/.dotfiles/zsh/custom.zsh $HOME/.oh-my-zsh/custom/
 
 	# Changing default shell
 	chsh -s $(which zsh)
