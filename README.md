@@ -29,7 +29,7 @@ sudo ./install.sh
 - Made updating packages optional
 
 ### Additional housekeeping: ###
-- Make sure that you run `:PlugStatus` (if using Vim) or `:PackerInstall` (if using Neovim) ~~and `:CocInstall coc-json coc-tsserver` the first time you run Neovim after running this script~~ (might use a different LSP client)
+- Make sure that you run `:PlugStatus` (if using Vim) or `:PackerInstall` (if using Neovim)
 - Enabling password asterisks:
   - In the terminal, enter `sudo visudo`
   - Enter `Defaults{tab}pwfeedback`
