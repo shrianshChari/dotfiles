@@ -124,3 +124,51 @@ function MainHalf()
 	--]]
 end
 
+--[[
+______________________________
+|              |              |
+|              |              |
+|              |              |
+|              |              |
+|    editor    |     term     |
+|              |              |
+|              |              |
+|              |              |
+|              |              |
+|              |              |
+-------------------------------
+Creates a terminal to the right of the current window
+--]]
+function VTerm()
+	vim.cmd([[
+	vsp
+	wincmd l
+	term
+	wincmd h
+	]])
+end
+
+--[[
+______________________________
+|                             |
+|                             |
+|            editor           |
+|                             |
+|                             |
+| ----------------------------|
+|                             |
+|            term             |
+|                             |
+|                             |
+-------------------------------
+
+Creates a terminal below the current window
+--]]
+function HTerm()
+	vim.cmd([[
+	sp
+	wincmd j
+	term
+	wincmd k
+	]])
+end
