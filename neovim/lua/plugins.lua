@@ -44,11 +44,31 @@ require('packer').startup(function()
 	use 'luochen1990/rainbow'
 
 	-- Intellisense with LSP
-	-- use 'neovim/nvim-lspconfig'
 	use {
-		'neoclide/coc.nvim',
-		branch = 'release'
+		"neovim/nvim-lspconfig",
+		config = function()
+			local lspconfig = require("lspconfig")
+		end
 	}
+	use {
+		"williamboman/nvim-lsp-installer",
+		config = function()
+			require("nvim-lsp-installer").setup {}
+		end
+	}
+
+	use {
+		'ms-jpq/coq_nvim',
+		branch = 'coq',
+	}
+	use {
+		"ms-jpq/coq.artifacts",
+		branch = 'artifacts'
+	}
+	--use {
+		-- 'neoclide/coc.nvim',
+		-- branch = 'release'
+	-- }
 
 	-- Better syntax support
 	use 'sheerun/vim-polyglot'
@@ -75,9 +95,10 @@ require('packer').startup(function()
 end)
 
 -- Call plugin configurations
-require('plugin-configs.coc')
+-- require('plugin-configs.coc')
 require('plugin-configs.indentblankline')
 require('plugin-configs.onedark')
+require('plugin-configs.lsp')
 require('plugin-configs.lualine')
 require('plugin-configs.markdown')
 require('plugin-configs.minimap')
