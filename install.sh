@@ -351,7 +351,7 @@ if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
 	else
 		# symlink for .zshrc
 		rm $HOME/.zshrc
-		ln -s $HOME/.dotfiles/zsh/zshrc $HOME/.zshrc
+		ln -s $HOME/.dotfiles/zsh/rc.zsh $HOME/.zshrc
 		echo "zshrc symlink complete!"
 	fi
 else
