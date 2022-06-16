@@ -1,12 +1,23 @@
-# dotfiles #
-
+<!--- Funny big text thanks to figlet --->
+```
+         __         _                  __    ________               _
+   _____/ /_  _____(_)___ _____  _____/ /_  / ____/ /_  ____ ______(_)
+  / ___/ __ \/ ___/ / __ `/ __ \/ ___/ __ \/ /   / __ \/ __ `/ ___/ /
+ (__  ) / / / /  / / /_/ / / / (__  ) / / / /___/ / / / /_/ / /  / /
+/____/_/ /_/_/  /_/\__,_/_/ /_/____/_/ /_/\____/_/ /_/\__,_/_/  /_/
+       __      __  _____ __
+  ____/ /___  / /_/ __(_) /__  _____
+ / __  / __ \/ __/ /_/ / / _ \/ ___/
+/ /_/ / /_/ / /_/ __/ / /  __(__  )
+\__,_/\____/\__/_/ /_/_/\___/____/
+```
 <hr>
 
-### Prerequisites: ###
+### Prerequisites:
 - You are installing on Linux (presumably Debian/Ubuntu-based distros)
 - You already have installed `git`.
 
-### Installation: ###
+### Installation:
 ```bash
 # 1. Clone the repo into home folder
 git clone https://github.com/shrianshChari/dotfiles.git ~/.dotfiles # HTTPS
@@ -21,14 +32,14 @@ cd ~/.dotfiles
 sudo ./install.sh
 ```
 
-### Completed: ###
+### Completed:
 - Scripts that install packages from `apt` and `snap`
 - Installation of Atom packages
 - Created symlinks for `bashrc`, `gitconfig`, and either `bash_profile` or `profile`
 - Stopped bothering with other package managers, focused only on `apt` and `snap`
 - Made updating packages optional
 
-### Additional housekeeping: ###
+### Additional housekeeping:
 - Make sure that you run `:PlugStatus` (if using Vim) or `:PackerInstall` (if using Neovim)
 - Enabling password asterisks:
   - In the terminal, enter `sudo visudo`
