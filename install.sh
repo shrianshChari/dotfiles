@@ -5,25 +5,9 @@
 
 # You should also have root access of the new computer
 
-# Ripped this from the build.sh file from MangoHud
-# It's super handy, and I'm pretty sure it'll work
-
 UPDATE_PACKAGES="sudo apt update"
 MANAGER_INSTALL="apt install"
 DEB_INSTALL="dpkg -i"
-
-# Funny big text thanks to figlet
-echo "         __         _                  __    ________               _ "
-echo "   _____/ /_  _____(_)___ _____  _____/ /_  / ____/ /_  ____ ______(_)"
-echo "  / ___/ __ \/ ___/ / __ \`/ __ \/ ___/ __ \/ /   / __ \/ __ \`/ ___/ / "
-echo " (__  ) / / / /  / / /_/ / / / (__  ) / / / /___/ / / / /_/ / /  / /  "
-echo "/____/_/ /_/_/  /_/\__,_/_/ /_/____/_/ /_/\____/_/ /_/\__,_/_/  /_/   "
-
-echo "       __      __  _____ __         "
-echo "  ____/ /___  / /_/ __(_) /__  _____"
-echo " / __  / __ \/ __/ /_/ / / _ \/ ___/"
-echo "/ /_/ / /_/ / /_/ __/ / /  __(__  ) "
-echo "\__,_/\____/\__/_/ /_/_/\___/____/  "
 
 read -p 'Update packages? (Y/n) ' updatepackages
 # read -p 'Install Atom? (Y/n) ' installatom
@@ -97,12 +81,8 @@ fi
 # Kitty
 if [[ $installkitty == 'Y' || $installkitty == 'y' ]]; then
 	echo 'Installing Kitty...'
-	sudo ${MANAGER_INSTALL} kitty -y
-	sudo update-alternatives --config x-terminal-emulator
-
-	mkdir $HOME/.config/kitty/
-
-	ln -s $HOME/.dotfiles/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+	
+	bash ./scripts/kitty.sh
 else
 	echo 'Skipping Kitty install.'
 fi
@@ -115,17 +95,13 @@ if [[ $installmu == 'Y' || $installmu == 'y' ]]; then
 	sudo ${MANAGER_INSTALL} bat -y
 
 	# git-delta
-	wget https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb
-	sudo ${DEB_INSTALL} ./git-delta_0.13.0_amd64.deb
-	rm git-delta_0.13.0_amd64.deb
+	bash ./scripts/git-delta.sh
 
 	# htop
 	sudo ${MANAGER_INSTALL} htop -y
 		
 	# lsd
-	wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
-	sudo ${DEB_INSTALL} ./lsd_0.20.1_amd64.deb
-	rm lsd_0.20.1_amd64.deb
+	bash ./scripts/lsd.sh
 
 	# tree
 	sudo ${MANAGER_INSTALL} tree -y
@@ -160,60 +136,13 @@ if [[ $installvimnvim == 'Y' || $installvimnvim == 'y' ]]; then
 	if [[ $installneovim == 'Y' || $installneovim == 'y' ]]; then
 		echo 'Installing Neovim...'
 
-		# Install code-minimap
-		wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap_0.6.4_arm64.deb
-
-		sudo ${DEB_INSTALL} ./code-minimap_0.6.4_arm64.deb
-		rm code-minimap_0.6.4_arm64.deb
-
-		wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
-		sudo ${DEB_INSTALL} ./nvim-linux64.deb
-		rm nvim-linux64.deb
-
-		if [ ! -d "$HOME/.config/nvim" ]; then
-			mkdir $HOME/.config/nvim
-			echo "Nvim folder created"
-		fi
-
-		# symlink for init.lua
-		if [ -f "$HOME/.config/nvim/init.vim" ]; then
-			rm $HOME/.config/nvim/init.vim
-		fi
-		ln -s $HOME/.dotfiles/neovim/init.lua $HOME/.config/nvim/
-
-		ln -s $HOME/.dotfiles/neovim/lua $HOME/.config/nvim/
-		
-		# Packer.nvim
-		git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-			~/.local/share/nvim/site/pack/packer/start/packer.nvim
+		bash ./scripts/code-minimap.sh
+		bash ./scripts/nvim.sh
 	else
 		echo 'Installing vim...'
 
-		# Install code-minimap
-		wget https://github.com/wfxr/code-minimap/releases/download/v0.6.4/code-minimap_0.6.4_arm64.deb
-
-		sudo ${DEB_INSTALL} ./code-minimap_0.6.4_arm64.deb
-		rm code-minimap_0.6.4_arm64.deb
-
-		sudo ${MANAGER_INSTALL} vim -y
-
-		# Installing vim-plug autoloader
-		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-		if [ -f "$HOME/.vimrc" ]; then
-			rm $HOME/.vimrc
-		fi
-		ln -s $HOME/.dotfiles/vim/init.vim $HOME/.vimrc
-
-		if [ ! -d "$HOME/.vim" ]; then
-			mkdir $HOME/.vim
-			echo "Vim folder created"
-		fi
-		ln -s $HOME/.dotfiles/vim/config $HOME/.vim/
-
-		echo "Vim symlinks created!"
-		echo "Be sure to run \"vim -c 'PlugInstall'\" when first opening Vim!"
+		bash ./scripts/code-minimap.sh
+		bash ./scripts/vim.sh
 	fi
 else
 	echo "Skpping editor install"
@@ -314,46 +243,7 @@ echo "gitconfig symlink complete!"
 if [[ $installzsh == 'Y' || $installzsh == 'y' ]]; then
 	echo "Using zsh..."
 
-	# Installation of zsh
-	sudo ${MANAGER_INSTALL} zsh -y
-
-	# Installation of oh-my-zsh
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-
-	# zsh syntax highlighting
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-	# Powerlevel10k
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-	# Create fonts dir if they don't exist
-	mkdir -p ~/.local/share/fonts
-
-	# Install Nerd Font for Vim-Devicons and Powerlevel10k
-	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf
-	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Italic/complete/DejaVu%20Sans%20Mono%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
-	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Bold/complete/DejaVu%20Sans%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-	wget -P $HOME/.local/share/fonts/ https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/DejaVuSansMono/Bold-Italic/complete/DejaVu%20Sans%20Mono%20Bold%20Oblique%20Nerd%20Font%20Complete%20Mono.ttf
-
-	ln -s $HOME/.dotfiles/zsh/p10k.zsh $HOME/.p10k.zsh
-	ln -s $HOME/.dotfiles/zsh/custom.zsh $HOME/.oh-my-zsh/custom/
-
-	# Changing default shell
-	chsh -s $(which zsh)
-
-	# Compatitbility with Tilix
-	if [[ $installtilix == 'Y' ]]; then
-		# symlink for .zshrc
-		sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-		rm $HOME/.zshrc
-		ln -s $HOME/.dotfiles/zsh/zshrctilix $HOME/.zshrc
-		echo "zshrc symlink complete!"
-	else
-		# symlink for .zshrc
-		rm $HOME/.zshrc
-		ln -s $HOME/.dotfiles/zsh/rc.zsh $HOME/.zshrc
-		echo "zshrc symlink complete!"
-	fi
+	bash ./scripts/zsh.sh
 else
 	echo "Using bash..."
 
