@@ -1,7 +1,7 @@
 local onedarkpro = require('onedarkpro')
 
 onedarkpro.setup({
-		theme = 'onedark_dark',
+		theme = 'onedark_vivid',
 		plugins = {
 			all = false,
 		},
