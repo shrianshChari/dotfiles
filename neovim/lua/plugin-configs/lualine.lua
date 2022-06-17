@@ -1,7 +1,7 @@
 -- lualine configuration
 require('lualine').setup {
 	options = {
-		theme = 'onedark',
+		theme = 'onedarkpro',
 		section_separators = '',
 		component_separators = '│',
 	},

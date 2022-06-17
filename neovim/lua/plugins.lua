@@ -23,7 +23,9 @@ require('packer').startup(function()
 	}
 
 	-- Color scheme
-	use 'navarasu/onedark.nvim'
+	-- use 'navarasu/onedark.nvim'
+
+	use 'olimorris/onedarkpro.nvim'
 
 	-- Auto pairs for '(' '[' '{'
 	use 'jiangmiao/auto-pairs'
@@ -96,7 +98,8 @@ end)
 
 -- Call plugin configurations
 -- require('plugin-configs.coc')
-require('plugin-configs.onedark')
+-- require('plugin-configs.onedark')
+require('plugin-configs.onedarkpro')
 require('plugin-configs.lsp')
 require('plugin-configs.lualine')
 require('plugin-configs.markdown')
