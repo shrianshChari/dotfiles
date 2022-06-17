@@ -96,7 +96,6 @@ end)
 
 -- Call plugin configurations
 -- require('plugin-configs.coc')
-require('plugin-configs.indentblankline')
 require('plugin-configs.onedark')
 require('plugin-configs.lsp')
 require('plugin-configs.lualine')
