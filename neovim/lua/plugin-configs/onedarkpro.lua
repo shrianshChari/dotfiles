@@ -3,7 +3,8 @@ local onedarkpro = require('onedarkpro')
 onedarkpro.setup({
 		theme = 'onedark_vivid',
 		plugins = {
-			all = false,
+			all = true,
+			nvim_tree = false,
 		},
 		colors = {
 			cursorline = '#3A3F4A',
