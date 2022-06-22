@@ -5,7 +5,7 @@ local servers = {
 	"jsonls", -- JSON
 	"bashls", -- Bash/Zsh
 	"gopls", -- Go
-	"rust-analyzer", -- Rust
+	"rust_analyzer", -- Rust
 }
 
 require('nvim-lsp-installer').setup({
