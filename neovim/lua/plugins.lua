@@ -59,6 +59,7 @@ require('packer').startup(function()
 		end
 	}
 
+	-- Auto-completion
 	use {
 		'ms-jpq/coq_nvim',
 		branch = 'coq',
@@ -67,10 +68,6 @@ require('packer').startup(function()
 		"ms-jpq/coq.artifacts",
 		branch = 'artifacts'
 	}
-	--use {
-		-- 'neoclide/coc.nvim',
-		-- branch = 'release'
-	-- }
 
 	-- Better syntax support
 	use 'sheerun/vim-polyglot'
