@@ -50,6 +50,7 @@ require('packer').startup(function()
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+	use 'p00f/nvim-ts-rainbow'
 
 	-- Intellisense with LSP
 	use {
@@ -94,6 +95,9 @@ require('packer').startup(function()
 
 	-- Indentation markers for space indentation
 	use 'lukas-reineke/indent-blankline.nvim'
+
+	-- Commenting
+	use 'b3nj5m1n/kommentary'
 
 	-- Minimap for vim
 	-- use 'wfxr/minimap.vim'
