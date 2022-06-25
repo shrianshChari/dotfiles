@@ -50,6 +50,8 @@ require('packer').startup(function()
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+
+	-- Rainbow brackets
 	use 'p00f/nvim-ts-rainbow'
 
 	-- Intellisense with LSP
