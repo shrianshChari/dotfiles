@@ -103,11 +103,20 @@ require('packer').startup(function()
 
 	-- Minimap for vim
 	-- use 'wfxr/minimap.vim'
+
+	use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+	}
 end)
 
 -- Call plugin configurations
 -- require('configs.coc')
 -- require('configs.onedark')
+require('configs.alpha')
 require('configs.onedarkpro')
 require("configs.treesitter")
 require('configs.lsp')
