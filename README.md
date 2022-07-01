@@ -56,7 +56,7 @@ sudo ./install.sh
 - [x] Separate configuration files into separate files (init.vim -> plugin.vim, config.vim, etc.)
 - [x] Set up ~~brew~~, neovim, git-delta, tree installation
 - [ ] ~~Move more installs to brew so that I'm less dependent on apt~~
-- [ ] Finish migrating to init.lua (namely LSP client)
+- [x] Finish migrating to init.lua (namely LSP client)
 - [x] Install all the Nerd fonts in one go from install script
 
 ### Installed Packages: ###
