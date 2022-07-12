@@ -82,6 +82,46 @@ function MainHalf()
   wincmd k
 endfunction
 
+" ______________________________
+" |              |              |
+" |              |              |
+" |              |              |
+" |              |              |
+" |    editor    |     term     |
+" |              |              |
+" |              |              |
+" |              |              |
+" |              |              |
+" |              |              |
+" -------------------------------
+" Creates a terminal to the right of the current window
+function VTerm()
+	vsp
+	wincmd l
+	term
+	wincmd h
+endfunction
+
+" ______________________________
+" |                             |
+" |                             |
+" |            editor           |
+" |                             |
+" |                             |
+" | ----------------------------|
+" |                             |
+" |            term             |
+" |                             |
+" |                             |
+" -------------------------------
+" Creates a terminal below the current window
+function HTerm()
+	sp
+	wincmd j
+	term
+	wincmd k
+endfunction
+
 " CS240 Work Environment (thanks Theo!)
 " You need to call it with the name of the folder, not the homework number
 " AKA run `:call CS240('hw1')`, not `:call CS240(1)`
@@ -100,3 +140,9 @@ function CS240(hwNum)
   wincmd h
   5 wincmd >
 endfunction
+
+command! HMain call HMain()
+command! VMain call VMain()
+command! MainHalf call MainHalf()
+command! VTerm call VTerm()
+command! HTerm call HTerm()

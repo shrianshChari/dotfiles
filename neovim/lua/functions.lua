@@ -13,7 +13,6 @@ ______________________________
 |      |          |     m     |
 -------------------------------
 Remember that ctrl w + hjkl helps you navigate between windows
-Call functions with :call HMain()
 --]]
 function HMain()
 	-- local fn = vim.fn
@@ -56,7 +55,6 @@ ______________________________
 |      |          |     m     |
 -------------------------------
 Remember that ctrl w + hjkl helps you navigate between windows
-Call functions with :call VMain()
 --]]
 function VMain()
 	-- local fn = vim.fn
@@ -100,7 +98,6 @@ ___________________
 |      |     m     |
 --------------------
 Remember that ctrl w + hjkl helps you navigate between windows
-Call functions with :call MainHalf()
 --]]
 function MainHalf()
 	-- local fn = vim.fn
@@ -172,3 +169,11 @@ function HTerm()
 	wincmd k
 	]])
 end
+
+-- User commands for calling functions
+local api = vim.api
+api.nvim_create_user_command("HMain", "lua HMain()", {})
+api.nvim_create_user_command("VMain", "lua VMain()", {})
+api.nvim_create_user_command("MainHalf", "lua MainHalf()", {})
+api.nvim_create_user_command("VTerm", "lua VTerm()", {})
+api.nvim_create_user_command("HTerm", "lua HTerm()", {})
