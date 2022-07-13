@@ -7,6 +7,15 @@ nmap('<C-t>', ':NvimTreeOpen<CR>', {}) -- Enable NvimTree
 nmap('<C-n>', ':NvimTreeToggle<CR>', {}) -- Toggle NvimTree
 
 require('nvim-tree').setup {
-		hijack_cursor = true,
-		create_in_closed_folder = true,
-	}
+	hijack_cursor = true,
+	create_in_closed_folder = true,
+	view = {
+		mappings = {
+			list = {
+				{ key = { "<C-]>", "+" }, action = "cd", mode = "n" },
+				{ key = { "<C-v>", "v" }, action = "vsplit", mode = "n" },
+				{ key = { "<C-x>", "h" }, action = "split", mode = "n" }
+			},
+		},
+	},
+}
