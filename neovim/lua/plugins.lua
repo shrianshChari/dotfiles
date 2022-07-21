@@ -111,6 +111,9 @@ require('packer').startup(function()
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
 	}
+
+	-- Color highlighting
+	use 'norcalli/nvim-colorizer.lua'
 end)
 
 -- Call plugin configurations
@@ -118,10 +121,11 @@ end)
 -- require('configs.onedark')
 require('configs.alpha')
 require('configs.onedarkpro')
+require('configs.lualine')
+require('configs.nvimtree')
 require("configs.treesitter")
 require('configs.lsp')
-require('configs.lualine')
+require('configs.colorizer')
 require('configs.markdown')
-require('configs.minimap')
-require('configs.nvimtree')
+-- require('configs.minimap')
 require('configs.presence-nvim')
