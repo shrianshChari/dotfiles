@@ -114,6 +114,9 @@ require('packer').startup(function()
 
 	-- Color highlighting
 	use 'norcalli/nvim-colorizer.lua'
+
+	-- Cheat sheets
+	use 'Djancyp/cheat-sheet'
 end)
 
 -- Call plugin configurations
@@ -129,4 +132,5 @@ require('configs.colorizer')
 require('configs.markdown')
 -- require('configs.minimap')
 require('configs.presence-nvim')
+require('configs.cheatsh')
 require('configs.colorizer')
