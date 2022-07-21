@@ -111,6 +111,9 @@ require('packer').startup(function()
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
 	}
+
+	-- Color highlighting
+	use 'norcalli/nvim-colorizer.lua'
 end)
 
 -- Call plugin configurations
@@ -125,3 +128,4 @@ require('configs.markdown')
 require('configs.minimap')
 require('configs.nvimtree')
 require('configs.presence-nvim')
+require('configs.colorizer')
