@@ -5,6 +5,7 @@ local servers = {
 	"jsonls", -- JSON
 	"bashls", -- Bash/Zsh
 	"gopls", -- Go
+	"golangci_lint_ls", -- Also Go
 	"rust_analyzer", -- Rust
 }
 
