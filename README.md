@@ -77,6 +77,7 @@ sudo ./install.sh
 - [NVM](https://github.com/nvm-sh/nvm) (curl script)
 - [Steam](https://store.steampowered.com) (apt)
 - ~~[Tilix](https://gnunn1.github.io/tilix-web/ "Switched to using Kitty as my terminal emulator") (apt)~~
+- [Tmux](https://tmux.github.io/) (apt)
 - [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks) (apt)
 - [Zsh](http://zsh.sourceforge.net) and [Oh My Zsh](https://ohmyz.sh/ "Plugin manager for zsh") (apt)
 - [Snap](https://snapcraft.io) (apt)

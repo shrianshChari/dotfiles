@@ -19,6 +19,7 @@ read -p 'Install Neofetch? (Y/n) ' installneofetch
 read -p 'Install Vim/Neovim? (Y/n) ' installvimnvim
 read -p 'Install NVM? (Y/n) ' installnode
 read -p 'Install Steam? (Y/n) ' installsteam
+read -p 'Install Tmux? (Y/n) ' installtmux
 # read -p 'Install Tilix? (Y/n) ' installtilix
 read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 read -p 'Install zsh? (Y/n) ' installzsh
@@ -164,6 +165,15 @@ if [[ $installsteam == 'Y' || $installsteam == 'y' ]]; then
 	sudo ${MANAGER_INSTALL} steam -y
 else
 	echo 'Skipping Steam install.'
+fi
+
+# Tmux
+if [[ $installtmux == 'Y' || $installtmux == 'y' ]]; then
+	echo 'Installing Tmux...'
+
+	bash ./scripts/tmux.sh
+else
+	echo 'Skipping Tmux install...'
 fi
 
 # Tilix
