@@ -7,7 +7,7 @@ local servers = {
 	"gopls", -- Go
 	"golangci_lint_ls", -- Also Go
 	"rust_analyzer", -- Rust
-	"ccls", -- C/C++
+	-- "ccls", -- C/C++
 }
 
 require('nvim-lsp-installer').setup({
