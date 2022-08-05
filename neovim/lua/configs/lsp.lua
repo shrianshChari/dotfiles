@@ -11,21 +11,16 @@ local servers = {
 }
 
 require('nvim-lsp-installer').setup({
-		ensure_installed = servers,
-		ui = {
-			icons = {
-				server_installed = "✓",
-				server_pending = "➜",
-				server_uninstalled = "✗"
-			}
+	ui = {
+		icons = {
+			server_installed = "✓",
+			server_pending = "➜",
+			server_uninstalled = "✗"
 		}
-	})
-
-vim.g.coq_settings = {
-	auto_start = 'shut-up'
-}
+	}
+})
 
 local lsp = require('lsp-zero')
-lsp.ensure_installed(servers)
 lsp.preset('recommended')
+lsp.ensure_installed(servers)
 lsp.setup()
