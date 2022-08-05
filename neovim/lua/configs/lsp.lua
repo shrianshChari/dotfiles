@@ -7,6 +7,7 @@ local servers = {
 	"gopls", -- Go
 	"golangci_lint_ls", -- Also Go
 	"rust_analyzer", -- Rust
+	"ccls", -- C/C++
 }
 
 require('nvim-lsp-installer').setup({
@@ -23,3 +24,8 @@ require('nvim-lsp-installer').setup({
 vim.g.coq_settings = {
 	auto_start = 'shut-up'
 }
+
+local lsp = require('lsp-zero')
+lsp.ensure_installed(servers)
+lsp.preset('recommended')
+lsp.setup()
