@@ -82,8 +82,11 @@ require('packer').startup(function()
 	-- kitty.conf highlighting
 	use 'fladson/vim-kitty'
 
-	-- Fugitive Git integration
-	use 'tpope/vim-fugitive'
+	--  Git integration
+	use {
+		'shrianshChari/git.nvim',
+		branch = 'shortcut',
+	}
 
 	-- Shows Git differences in editor
 	use {
@@ -126,6 +129,7 @@ require('configs.lualine')
 require('configs.nvimtree')
 require("configs.treesitter")
 require('configs.lsp')
+require('configs.git')
 require('configs.colorizer')
 require('configs.autopairs')
 require('configs.markdown')
