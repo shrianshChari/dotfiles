@@ -20,6 +20,8 @@ require('nvim-lsp-installer').setup({
 	}
 })
 
+local lspkind = require('lspkind')
+
 local lspzero = require('lsp-zero')
 lspzero.set_preferences({
 	suggest_lsp_servers = true,
@@ -37,4 +39,12 @@ lspzero.set_preferences({
 	}
 })
 lspzero.ensure_installed(servers)
+lspzero.setup_nvim_cmp({
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = 'symbol_text',
+			maxwidth = 50,
+		})
+	}
+})
 lspzero.setup()

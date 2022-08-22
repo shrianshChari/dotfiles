@@ -76,6 +76,9 @@ require('packer').startup(function()
 		}
 	}
 
+	-- VSCode-like Pictograms
+	use 'onsails/lspkind.nvim'
+
 	-- Better syntax support
 	use 'sheerun/vim-polyglot'
 
