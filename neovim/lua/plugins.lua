@@ -86,10 +86,7 @@ require('packer').startup(function()
 	use 'fladson/vim-kitty'
 
 	--  Git integration
-	use {
-		'shrianshChari/git.nvim',
-		branch = 'shortcut',
-	}
+	use 'shrianshChari/git.nvim'
 
 	-- Shows Git differences in editor
 	use {
