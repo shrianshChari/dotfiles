@@ -26,6 +26,7 @@ local langs = {
 	'markdown',
 	'markdown_inline',
 	'make',
+	'r',
 }
 
 configs.setup {
@@ -39,6 +40,7 @@ configs.setup {
 	},
 	rainbow = {
 		enable = true,
+		disable = {},
 		extended_mode = true,
 		max_file_lines = nil,
 	}
