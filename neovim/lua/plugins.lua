@@ -42,17 +42,11 @@ require('packer').startup(function()
 	-- Discord Rich Presence
 	use 'andweeb/presence.nvim'
 
-	-- Rainbow brackets plugin
-	use 'luochen1990/rainbow'
-
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+		-- run = ':TSUpdate'
 	}
-
-	-- Rainbow brackets
-	use 'p00f/nvim-ts-rainbow'
 
 	-- Intellisense with LSP
 	use {
