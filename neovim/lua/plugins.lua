@@ -53,20 +53,20 @@ require('packer').startup(function()
 		'VonHeikemen/lsp-zero.nvim',
 		requires = {
 			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/nvim-lsp-installer'},
+			{ 'neovim/nvim-lspconfig' },
+			{ 'williamboman/nvim-lsp-installer' },
 
 			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'saadparwaiz1/cmp_luasnip' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-nvim-lua' },
 
 			-- Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
+			{ 'L3MON4D3/LuaSnip' },
+			{ 'rafamadriz/friendly-snippets' },
 		}
 	}
 
@@ -85,7 +85,7 @@ require('packer').startup(function()
 	-- Shows Git differences in editor
 	use {
 		'lewis6991/gitsigns.nvim',
-		config = function ()
+		config = function()
 			require('gitsigns').setup()
 		end
 	}
@@ -102,9 +102,24 @@ require('packer').startup(function()
 	use {
 		'goolord/alpha-nvim',
 		requires = { 'kyazdani42/nvim-web-devicons' },
-		config = function ()
-			require'alpha'.setup(require'alpha.themes.startify'.config)
+		config = function()
+			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end
+	}
+
+	-- Popup for cmdline
+	use {
+		'VonHeikemen/fine-cmdline.nvim',
+		requires = {
+			{ 'MunifTanjim/nui.nvim' }
+		}
+	}
+
+	use {
+		'VonHeikemen/searchbox.nvim',
+		requires = {
+			{ 'MunifTanjim/nui.nvim' }
+		}
 	}
 
 	-- Color highlighting
@@ -126,6 +141,8 @@ require('configs.lsp')
 require('configs.git')
 require('configs.colorizer')
 require('configs.autopairs')
+require('configs.fine-cmdline')
+require('configs.searchbox')
 require('configs.markdown')
 -- require('configs.minimap')
 require('configs.presence-nvim')

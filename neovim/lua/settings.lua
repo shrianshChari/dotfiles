@@ -23,4 +23,6 @@ opt.list = true -- Display tab characters
 
 opt.colorcolumn = '81' -- Reveals 81st column so that you don't go past it
 
+opt.ch = 0 -- Hide the command line by default so it only is seen when you run a command
+
 vim.cmd('syntax enable') -- Enable syntax highlighting
