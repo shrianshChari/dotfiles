@@ -27,6 +27,7 @@ local langs = {
 	'markdown_inline',
 	'make',
 	'r',
+	'help',
 }
 
 configs.setup {
