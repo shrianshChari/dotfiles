@@ -1,10 +1,6 @@
-local function nmap(shortcut, command, options)
-	vim.api.nvim_set_keymap('n', shortcut, command, options)
-end
-
-nmap('n', ':NvimTreeFocus<CR>', {}) -- Jump to NvimTree
-nmap('<C-t>', ':NvimTreeOpen<CR>', {}) -- Enable NvimTree
-nmap('<C-n>', ':NvimTreeToggle<CR>', {}) -- Toggle NvimTree
+vim.api.nvim_set_keymap('n', 'n', ':NvimTreeFocus<CR>', { silent = true }) -- Jump to NvimTree
+vim.api.nvim_set_keymap('n', '<C-t>', ':NvimTreeOpen<CR>', { silent = true }) -- Enable NvimTree
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true }) -- Toggle NvimTree
 
 require('nvim-tree').setup {
 	hijack_cursor = true,
