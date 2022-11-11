@@ -107,18 +107,14 @@ require('packer').startup(function()
 		end
 	}
 
-	-- Popup for cmdline
+	-- Packer
 	use {
-		'VonHeikemen/fine-cmdline.nvim',
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup()
+		end,
 		requires = {
-			{ 'MunifTanjim/nui.nvim' }
-		}
-	}
-
-	use {
-		'VonHeikemen/searchbox.nvim',
-		requires = {
-			{ 'MunifTanjim/nui.nvim' }
+			"MunifTanjim/nui.nvim",
 		}
 	}
 
@@ -130,8 +126,6 @@ require('packer').startup(function()
 end)
 
 -- Call plugin configurations
--- require('configs.coc')
--- require('configs.onedark')
 require('configs.alpha')
 require('configs.onedarkpro')
 require('configs.lualine')
@@ -141,10 +135,8 @@ require('configs.lsp')
 require('configs.git')
 require('configs.colorizer')
 require('configs.autopairs')
-require('configs.fine-cmdline')
-require('configs.searchbox')
+require('configs.noice-nvim')
 require('configs.markdown')
--- require('configs.minimap')
 require('configs.presence-nvim')
 require('configs.cheatsh')
 require('configs.colorizer')
