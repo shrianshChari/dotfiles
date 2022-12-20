@@ -178,3 +178,5 @@ api.nvim_create_user_command("MainHalf", "lua MainHalf()", {})
 api.nvim_create_user_command("VTerm", "lua VTerm()", {})
 api.nvim_create_user_command("HTerm", "lua HTerm()", {})
 api.nvim_create_user_command("AutoIndent", "lua vim.lsp.buf.format()", {})
+api.nvim_create_user_command("Rename", "lua vim.lsp.buf.rename()", {})
+
