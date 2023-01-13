@@ -4,7 +4,7 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true }) 
 
 require('nvim-tree').setup {
 	hijack_cursor = true,
-	create_in_closed_folder = true,
+	-- create_in_closed_folder = true,
 	actions = {
 		open_file = {
 			window_picker = {
