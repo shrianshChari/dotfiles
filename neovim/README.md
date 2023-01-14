@@ -49,3 +49,10 @@
 | Go to previous diagnostic         | <kbd>[</kbd> <kbd>d</kbd>    |
 | Go to next diagnostic             | <kbd>]</kbd> <kbd>d</kbd>    |
 
+## [kommentary](https://github.com/b3nj5m1n/kommentary)
+| Action                    | Keybind                                                                |
+|-------------------------- | ---------------------------------------------------------------------- |
+| Toggle comment            | <kbd>g</kbd> <kbd>c</kbd> <kbd>c</kbd> or <kbd>Ctrl</kbd> <kbd>/</kbd> |
+| Increase commenting level | <kbd>c</kbd> <kbd>i</kbd> <kbd>c</kbd>                                 |
+| Decrease commenting level | <kbd>c</kbd> <kbd>d</kbd> <kbd>c</kbd>                                 |
+
