@@ -10,7 +10,7 @@ local servers = {
 	"clangd", -- C/C++
 }
 
-require('nvim-lsp-installer').setup({
+require('mason').setup({
 	ui = {
 		icons = {
 			server_installed = "",
