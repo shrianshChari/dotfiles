@@ -3,7 +3,7 @@
 MANAGER_INSTALL="apt install"
 DEB_INSTALL="dpkg -i"
 
-wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
 sudo ${DEB_INSTALL} ./nvim-linux64.deb
 rm nvim-linux64.deb
 
