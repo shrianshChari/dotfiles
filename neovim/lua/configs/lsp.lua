@@ -1,6 +1,6 @@
 -- LSP servers that I want to have installed
 local servers = {
-	"sumneko_lua", -- Lua
+	"lua_ls", -- Lua
 	"tsserver", -- TypeScript/JavaScript
 	"jsonls", -- JSON
 	"bashls", -- Bash/Zsh
