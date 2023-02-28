@@ -58,7 +58,7 @@ sudo ./install.sh
 - [ ] ~~Move more installs to brew so that I'm less dependent on apt~~
 - [x] Finish migrating to init.lua (namely LSP client)
 - [x] Install all the Nerd fonts in one go from install script
-- [ ] Figure out all of my neovim keybinds and document them somewhere
+- [x] Figure out all of my neovim keybinds and document them somewhere
 
 ### Installed Packages: ###
 - ~~[Atom](https://atom.io "Retired because of Neovim") (apt)~~
