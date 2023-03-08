@@ -1,58 +1,57 @@
--- Install Lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+-- Install Packer
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
+		'git',
+		'clone',
+		'--depth', '1',
+		'https://github.com/wbthomason/packer.nvim',
+		install_path
 	})
 end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require('packer').startup(function(use)
+	use 'wbthomason/packer.nvim' -- Le package manager
+
 	-- File Explorer
-	{
+	use {
 		'kyazdani42/nvim-tree.lua',
-		dependencies = {
+		requires = {
 			'kyazdani42/nvim-web-devicons', -- File icons
 		},
-	},
+	}
 
 	-- Color scheme
-	--  'navarasu/onedark.nvim'
+	-- use 'navarasu/onedark.nvim'
 
-	'olimorris/onedarkpro.nvim',
+	use 'olimorris/onedarkpro.nvim'
 
 	-- Auto pairs for '(' '[' '{'
-	'jiangmiao/auto-pairs',
+	use 'jiangmiao/auto-pairs'
 
 	-- Lualine statusline
-	{
+	use {
 		'nvim-lualine/lualine.nvim',
-		dependencies = {
+		requires = {
 			'kyazdani42/nvim-web-devicons', -- File icons
 			opt = true
 		}
-	},
+	}
 
 	-- Discord Rich Presence
-	'andweeb/presence.nvim',
+	use 'andweeb/presence.nvim'
 
 	-- Treesitter
-	{
-		'HiPhish/nvim-ts-rainbow2',
-		dependencies = {
-			'nvim-treesitter/nvim-treesitter',
-		},
-	},
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		 run = ':TSUpdate'
+	}
 
 	-- Intellisense with LSP
-	{
+	use {
 		'VonHeikemen/lsp-zero.nvim',
-		dependencies = {
+		requires = {
 			-- LSP Support
 			{ 'neovim/nvim-lspconfig' },
 			{ 'williamboman/mason.nvim' },
@@ -68,78 +67,77 @@ require("lazy").setup({
 
 			-- Snippets
 			{ 'L3MON4D3/LuaSnip' },
-			{ 'theopn/friendly-snippets' },
+			{ 'rafamadriz/friendly-snippets' },
 		}
-	},
+	}
 
 	-- VSCode-like Pictograms
-	'onsails/lspkind.nvim',
+	use 'onsails/lspkind.nvim'
 
 	-- Better syntax support
-	'sheerun/vim-polyglot',
+	use 'sheerun/vim-polyglot'
 
 	-- kitty.conf highlighting
-	'fladson/vim-kitty',
+	use 'fladson/vim-kitty'
 
 	--  Git integration
-	'shrianshChari/git.nvim',
+	use 'shrianshChari/git.nvim'
 
 	-- Shows Git differences in editor
-	{
+	use {
 		'lewis6991/gitsigns.nvim',
 		config = function()
 			require('gitsigns').setup()
 		end
-	},
+	}
 
 	-- Indentation markers for space indentation
-	'lukas-reineke/indent-blankline.nvim',
+	use 'lukas-reineke/indent-blankline.nvim'
 
 	-- Commenting
-	'b3nj5m1n/kommentary',
+	use 'b3nj5m1n/kommentary'
 
 	-- Minimap for vim
-	--  'wfxr/minimap.vim'
+	-- use 'wfxr/minimap.vim'
 
-	{
+	use {
 		'goolord/alpha-nvim',
-		dependencies = { 'kyazdani42/nvim-web-devicons' },
+		requires = { 'kyazdani42/nvim-web-devicons' },
 		config = function()
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end
-	},
+	}
 
 	-- Packer
-	{
+	use {
 		"folke/noice.nvim",
 		config = function()
 			require("noice").setup()
 		end,
-		dependencies = {
+		requires = {
 			"MunifTanjim/nui.nvim",
 		}
-	},
+	}
 
-	{
+	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",
 		setup = function()
 			vim.g.mkdp_filetypes = {
 				"markdown"
-			}
-		end,
+		} end,
 		ft = {
 			"markdown"
 		},
-	},
+	})
 
 
 	-- Color highlighting
-	'norcalli/nvim-colorizer.lua',
+	use 'norcalli/nvim-colorizer.lua'
 
 	-- Cheat sheets
-	'Djancyp/cheat-sheet',
-})
+	use 'Djancyp/cheat-sheet'
+end)
 
 -- Call plugin configurations
 require('configs.alpha')
