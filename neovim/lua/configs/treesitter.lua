@@ -22,7 +22,6 @@ local langs = {
 	'python',
 	'toml',
 	'tsx',
-	'toml',
 	'markdown',
 	'markdown_inline',
 	'make',
