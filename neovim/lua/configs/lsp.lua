@@ -8,6 +8,7 @@ local servers = {
 	"golangci_lint_ls", -- Also Go
 	"rust_analyzer", -- Rust
 	"clangd", -- C/C++
+	"pyright", -- Python
 }
 
 require('mason').setup({
@@ -33,8 +34,8 @@ lspzero.set_preferences({
 	call_servers = 'local',
 	sign_icons = {
 		error = '',
-		warn = '卑',
-		hint = '',
+		warn = '󰔶',
+		hint = '󰉀',
 		info = ''
 	}
 })
