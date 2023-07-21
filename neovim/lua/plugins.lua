@@ -24,7 +24,10 @@ require("lazy").setup({
 	-- Color scheme
 	--  'navarasu/onedark.nvim'
 
-	'olimorris/onedarkpro.nvim',
+	{
+		'olimorris/onedarkpro.nvim',
+		branch = "neovim-0.8.0",
+	},
 
 	-- Auto pairs for '(' '[' '{'
 	'jiangmiao/auto-pairs',
