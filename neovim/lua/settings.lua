@@ -21,6 +21,12 @@ opt.expandtab = false -- Don't insert spaces when you press tab
 
 opt.list = true -- Display tab characters
 
+opt.listchars = {
+  tab = '│\\ ',
+  trail = '-',
+  nbsp = '+'
+}
+
 opt.colorcolumn = '81' -- Reveals 81st column so that you don't go past it
 
 opt.ch = 0 -- Hide the command line by default so it only is seen when you run a command
