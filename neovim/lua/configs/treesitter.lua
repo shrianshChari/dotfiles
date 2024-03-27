@@ -26,7 +26,7 @@ local langs = {
 	'markdown_inline',
 	'make',
 	'r',
-	'help',
+	'vimdoc',
 }
 
 configs.setup {
