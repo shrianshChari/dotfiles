@@ -26,7 +26,6 @@ require("lazy").setup({
 
 	{
 		'olimorris/onedarkpro.nvim',
-		branch = "neovim-0.8.0",
 	},
 
 	-- Auto pairs for '(' '[' '{'
@@ -117,7 +116,7 @@ require("lazy").setup({
 		end
 	},
 
-	-- Packer
+	-- Noice
 	{
 		"folke/noice.nvim",
 		config = function()
