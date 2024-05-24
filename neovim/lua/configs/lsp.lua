@@ -1,15 +1,40 @@
 -- LSP servers that I want to have installed
 local servers = {
-	"lua_ls", -- Lua
-	"tsserver", -- TypeScript/JavaScript
-	"jsonls", -- JSON
-	"bashls", -- Bash/Zsh
-	"gopls", -- Go
+	"lua_ls",          -- Lua
+	"tsserver",        -- TypeScript/JavaScript
+	"jsonls",          -- JSON
+	"bashls",          -- Bash/Zsh
+	"gopls",           -- Go
 	"golangci_lint_ls", -- Also Go
-	"rust_analyzer", -- Rust
-	"clangd", -- C/C++
-	"pyright", -- Python
+	"rust_analyzer",   -- Rust
+	"clangd",          -- C/C++
+	"pyright",         -- Python
 }
+
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	desc = 'LSP actions',
+	callback = function(event)
+		local opts = { buffer = event.buf }
+
+		-- these will be buffer-local keybindings
+		-- because they only work if you have an active language server
+
+		vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+		vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+		vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+		vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+		vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+		vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+		vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+		vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+	end
+})
 
 require('mason').setup({
 	ui = {
@@ -21,26 +46,78 @@ require('mason').setup({
 	}
 })
 
-local lspkind = require('lspkind')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lspzero = require('lsp-zero')
-lspzero.set_preferences({
-	suggest_lsp_servers = true,
-	setup_servers_on_start = true,
-	set_lsp_keymaps = true,
-	configure_diagnostics = true,
-	cmp_capabilities = true,
-	manage_nvim_cmp = true,
-	call_servers = 'local',
-	sign_icons = {
-		error = '',
-		warn = '󰔶',
-		hint = '󰉀',
-		info = ''
+local default_setup = function(server)
+	require('lspconfig')[server].setup({
+		capabilities = lsp_capabilities,
+	})
+end
+
+require('mason-lspconfig').setup {
+	ensure_installed = servers,
+	handlers = {
+		default_setup,
+		lua_ls = function()
+			require('lspconfig').lua_ls.setup({
+				capabilities = lsp_capabilities,
+				settings = {
+					Lua = {
+						runtime = {
+							version = 'LuaJIT'
+						},
+						diagnostics = {
+							globals = { 'vim' },
+						},
+						workspace = {
+							library = {
+								vim.env.VIMRUNTIME
+							}
+						}
+					}
+				}
+			})
+		end
 	}
-})
-lspzero.ensure_installed(servers)
-lspzero.setup_nvim_cmp({
+}
+
+local lspkind = require('lspkind')
+local cmp = require('cmp')
+
+cmp.setup({
+	sources = {
+		{ name = 'nvim_lsp' },
+	},
+	mapping = cmp.mapping.preset.insert({
+		-- Enter key confirms completion item
+		['<CR>'] = cmp.mapping.confirm({ select = false }),
+
+		-- Ctrl + space triggers completion menu
+		['<C-Space>'] = cmp.mapping.complete(),
+
+		['<Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end
+		),
+
+		['<S-Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end
+		),
+	}),
+	snippet = {
+		expand = function(args)
+			require('luasnip').lsp_expand(args.body)
+		end,
+	},
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol_text',
@@ -48,4 +125,23 @@ lspzero.setup_nvim_cmp({
 		})
 	}
 })
-lspzero.setup()
+
+vim.fn.sign_define(
+	'DiagnosticSignError',
+	{ texthl = 'DiagnosticSignError', text = '', numhl = 'DiagnosticSignError' }
+)
+
+vim.fn.sign_define(
+	'DiagnosticSignWarn',
+	{ texthl = 'DiagnosticSignWarn', text = '󰔶', numhl = 'DiagnosticSignWarn' }
+)
+
+vim.fn.sign_define(
+	'DiagnosticSignHint',
+	{ texthl = 'DiagnosticSignHint', text = '󰉀', numhl = 'DiagnosticSignHint' }
+)
+
+vim.fn.sign_define(
+	'DiagnosticSignInfo',
+	{ texthl = 'DiagnosticSignInfo', text = '', numhl = 'DiagnosticSignInfo' }
+)
