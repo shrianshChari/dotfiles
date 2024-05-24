@@ -45,10 +45,10 @@ require("lazy").setup({
 
 	-- Treesitter
 	{
-		'HiPhish/nvim-ts-rainbow2',
+		'HiPhish/rainbow-delimiters.nvim',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter',
-		},
+		}
 	},
 
 	{

@@ -38,12 +38,6 @@ configs.setup {
 	indent = {
 		enable = true
 	},
-	rainbow = {
-		enable = true,
-		disable = {},
-		extended_mode = true,
-		max_file_lines = nil,
-	},
 	autotag = {
 		enable = true,
 	}
