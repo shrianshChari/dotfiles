@@ -83,14 +83,26 @@ require('mason-lspconfig').setup {
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 cmp.setup({
 	sources = {
 		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' }
 	},
 	mapping = cmp.mapping.preset.insert({
 		-- Enter key confirms completion item
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
+		['<CR>'] = cmp.mapping.confirm(function (fallback)
+			if cmp.visible() then
+				if luasnip.expandable() then
+					luasnip.expand()
+				else
+					cmp.confirm({ select = false })
+				end
+			else
+				fallback()
+			end
+		end),
 
 		-- Ctrl + space triggers completion menu
 		['<C-Space>'] = cmp.mapping.complete(),
@@ -98,15 +110,18 @@ cmp.setup({
 		['<Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
+			elseif luasnip.locally_jumpable(1) then
+				luasnip.jump(1)
 			else
 				fallback()
 			end
-		end
-		),
+		end, { 'i', 's' }),
 
 		['<S-Tab>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif luasnip.locally_jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end

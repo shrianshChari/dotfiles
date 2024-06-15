@@ -66,9 +66,10 @@ require("lazy").setup({
 		{ 'hrsh7th/cmp-nvim-lua' },
 
 		-- Snippets
-		{ 'shrianshChari/friendly-snippets' },
 		{
 			'L3MON4D3/LuaSnip',
+			after = 'nvim-cmp',
+			dependencies = { 'shrianshChari/friendly-snippets' },
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
 			end
