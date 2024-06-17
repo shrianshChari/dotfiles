@@ -92,12 +92,14 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		-- Enter key confirms completion item
-		['<CR>'] = cmp.mapping.confirm(function (fallback)
+		['<CR>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				if luasnip.expandable() then
 					luasnip.expand()
 				else
-					cmp.confirm({ select = false })
+					cmp.confirm({
+						select = true,
+					})
 				end
 			else
 				fallback()
@@ -125,8 +127,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end
-		),
+		end, { 'i', 's' }),
 	}),
 	snippet = {
 		expand = function(args)
