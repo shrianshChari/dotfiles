@@ -71,7 +71,7 @@ require("lazy").setup({
 		{
 			'L3MON4D3/LuaSnip',
 			after = 'nvim-cmp',
-			dependencies = { 'shrianshChari/friendly-snippets' },
+			dependencies = { 'rafamadriz/friendly-snippets' },
 			config = function()
 				require("luasnip.loaders.from_vscode").lazy_load()
 			end
