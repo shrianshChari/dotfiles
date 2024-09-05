@@ -127,16 +127,9 @@ require("lazy").setup({
 	},
 
 	{
-		"iamcco/markdown-preview.nvim",
-		run = "cd app && npm install",
-		setup = function()
-			vim.g.mkdp_filetypes = {
-				"markdown"
-			}
-		end,
-		ft = {
-			"markdown"
-		},
+		"ellisonleao/glow.nvim",
+		config = true,
+		cmd = "Glow"
 	},
 
 
@@ -163,3 +156,4 @@ require('configs.markdown')
 require('configs.presence-nvim')
 require('configs.cheatsh')
 require('configs.colorizer')
+require('configs.glow')
