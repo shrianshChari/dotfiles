@@ -47,19 +47,24 @@ require('mason').setup({
 })
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-local default_setup = function(server)
-	require('lspconfig')[server].setup({
-		capabilities = lsp_capabilities,
-	})
-end
+local lspconfig = require('lspconfig')
 
 require('mason-lspconfig').setup {
 	ensure_installed = servers,
 	handlers = {
-		default_setup,
+		-- default handler
+		function(server)
+			lspconfig[server].setup({
+				capabilities = lsp_capabilities,
+			})
+		end,
+		tsserver = function()
+			lspconfig.ts_ls.setup({
+				capabilities = lsp_capabilities
+			})
+		end,
 		lua_ls = function()
-			require('lspconfig').lua_ls.setup({
+			lspconfig.lua_ls.setup({
 				capabilities = lsp_capabilities,
 				settings = {
 					Lua = {
