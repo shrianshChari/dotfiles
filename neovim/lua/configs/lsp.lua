@@ -1,7 +1,7 @@
 -- LSP servers that I want to have installed
 local servers = {
 	"lua_ls",          -- Lua
-	"tsserver",        -- TypeScript/JavaScript
+	"ts_ls",        -- TypeScript/JavaScript
 	"jsonls",          -- JSON
 	"bashls",          -- Bash/Zsh
 	"gopls",           -- Go
@@ -56,11 +56,6 @@ require('mason-lspconfig').setup {
 		function(server)
 			lspconfig[server].setup({
 				capabilities = lsp_capabilities,
-			})
-		end,
-		tsserver = function()
-			lspconfig.ts_ls.setup({
-				capabilities = lsp_capabilities
 			})
 		end,
 		lua_ls = function()
