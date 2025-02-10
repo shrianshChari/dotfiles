@@ -19,7 +19,3 @@ fi
 ln -s $HOME/.dotfiles/neovim/init.lua $HOME/.config/nvim/
 
 ln -s $HOME/.dotfiles/neovim/lua $HOME/.config/nvim/
-
-# Packer.nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim \
-	~/.local/share/nvim/site/pack/packer/start/packer.nvim
