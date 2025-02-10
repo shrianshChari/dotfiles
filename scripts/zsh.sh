@@ -30,16 +30,7 @@ ln -s $HOME/.dotfiles/zsh/custom.zsh $HOME/.oh-my-zsh/custom/
 # Changing default shell
 chsh -s $(which zsh)
 
-# Compatitbility with Tilix
-if [[ $installtilix == 'Y' ]]; then
-	# symlink for .zshrc
-	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-	rm $HOME/.zshrc
-	ln -s $HOME/.dotfiles/zsh/zshrctilix $HOME/.zshrc
-	echo "zshrc symlink complete!"
-else
-	# symlink for .zshrc
-	rm $HOME/.zshrc
-	ln -s $HOME/.dotfiles/zsh/rc.zsh $HOME/.zshrc
-	echo "zshrc symlink complete!"
-fi
+# symlink for .zshrc
+rm $HOME/.zshrc
+ln -s $HOME/.dotfiles/zsh/rc.zsh $HOME/.zshrc
+echo "zshrc symlink complete!"
