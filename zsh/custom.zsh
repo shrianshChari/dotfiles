@@ -61,6 +61,13 @@ then
 	alias v="nvim"
 fi
 
+if [[ -d ~/.dotfiles/git/custom-scripts ]]
+then
+	export PATH=$PATH:~/.dotfiles/git/custom-scripts
+
+	alias gpo='git push-origin'
+fi
+
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
 
