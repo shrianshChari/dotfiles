@@ -125,14 +125,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		}
 	},
-
-	{
-		"ellisonleao/glow.nvim",
-		config = true,
-		cmd = "Glow"
-	},
-
-
+	
 	-- Color highlighting
 	'norcalli/nvim-colorizer.lua',
 
@@ -156,4 +149,4 @@ require('configs.markdown')
 require('configs.presence-nvim')
 require('configs.cheatsh')
 require('configs.colorizer')
-require('configs.glow')
+-- require('configs.glow')
