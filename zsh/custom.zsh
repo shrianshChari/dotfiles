@@ -68,6 +68,8 @@ then
 	alias gpo='git push-origin'
 fi
 
+export PATH=$PATH:~/.local/bin/
+
 # Allows me to exit zsh by typing in ':q'
 alias :q="exit"
 
