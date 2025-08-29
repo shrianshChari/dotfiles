@@ -45,40 +45,29 @@ require('mason').setup({
 	}
 })
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-
 require('mason-lspconfig').setup {
 	ensure_installed = servers,
-	handlers = {
-		-- default handler
-		function(server)
-			lspconfig[server].setup({
-				capabilities = lsp_capabilities,
-			})
-		end,
-		lua_ls = function()
-			lspconfig.lua_ls.setup({
-				capabilities = lsp_capabilities,
-				settings = {
-					Lua = {
-						runtime = {
-							version = 'LuaJIT'
-						},
-						diagnostics = {
-							globals = { 'vim' },
-						},
-						workspace = {
-							library = {
-								vim.env.VIMRUNTIME
-							}
-						}
-					}
-				}
-			})
-		end
-	}
 }
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT'
+			},
+			diagnostics = {
+				globals = { 'vim' },
+			},
+			workspace = {
+				library = {
+					vim.env.VIMRUNTIME
+				}
+			}
+		}
+	}
+})
+
+vim.lsp.enable(servers)
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')
