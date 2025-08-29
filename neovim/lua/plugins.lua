@@ -107,9 +107,18 @@ require("lazy").setup({
 	-- Minimap for vim
 	--  'wfxr/minimap.vim'
 
+	-- For rendering Markdown files
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
+
 	{
 		'goolord/alpha-nvim',
-		dependencies = { 'kyazdani42/nvim-web-devicons' },
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
 			require 'alpha'.setup(require 'alpha.themes.startify'.config)
 		end
@@ -125,7 +134,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		}
 	},
-	
+
 	-- Color highlighting
 	'norcalli/nvim-colorizer.lua',
 
