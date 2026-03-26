@@ -10,7 +10,6 @@ MANAGER_INSTALL="apt install"
 DEB_INSTALL="dpkg -i"
 
 read -p 'Update packages? (Y/n) ' updatepackages
-# read -p 'Install Atom? (Y/n) ' installatom
 read -p 'Install Brave Browser? (Y/n) ' installbrave
 read -p 'Install Discord? (Y/n) ' installdiscord
 read -p 'Install Kitty? (Y/n) ' installkitty
@@ -29,25 +28,6 @@ if [[ $updatepackages == 'Y' || $updatepackages == 'y' ]]; then
 	$UPDATE_PACKAGES
 else
 	echo 'Skipping updating packages...'
-fi
-
-# Atom
-if [[ $installatom == 'Y' || $installatom == 'y' ]]; then
-	echo 'Installing Atom...'
-	sudo ${MANAGER_INSTALL} atom -y
-	python3 atom/install.py
-
-	# symlink for config.cson
-	rm $HOME/.atom/config.cson
-	ln -s $HOME/.dotfiles/atom/config.cson $HOME/.atom/config.cson
-	echo "Atom config.cson symlink complete!"
-
-	if [[ -d "$HOME/.atom/packages/script/lib/grammars" ]]; then
-
-		cp $HOME/.dotfiles/atom/python.js $HOME/.atom/packages/script/lib/grammars
-	fi
-else
-	echo 'Skipping Atom install.'
 fi
 
 # Brave Browser
