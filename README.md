@@ -34,7 +34,6 @@ sudo ./install.sh
 
 ### Completed:
 - Scripts that install packages from `apt` and `snap`
-- Installation of Atom packages
 - Created symlinks for `bashrc`, `gitconfig`, and either `bash_profile` or `profile`
 - Stopped bothering with other package managers, focused only on `apt` and `snap`
 - Made updating packages optional
@@ -61,7 +60,6 @@ sudo ./install.sh
 - [x] Figure out all of my neovim keybinds and document them somewhere
 
 ### Installed Packages: ###
-- ~~[Atom](https://atom.io "Retired because of Neovim") (apt)~~
 - [Brave Browser](https://brave.com) (apt)
 - [Discord](https://discord.com) (apt)
 - [Eclipse](https://eclipse.org) (apt)
@@ -72,12 +70,10 @@ sudo ./install.sh
   - [`htop`](https://htop.dev/) (apt)
   - [`lsd`](https://github.com/Peltoche/lsd) (deb)
   - [`tree`](http://mama.indstate.edu/users/ice/tree/) (apt)
-- ~~[GNU Nano](https://nano-editor.org "Rendered obsolete in the face of Neovim") (apt)~~
 - [Neofetch](https://github.com/dylanaraps/neofetch) (apt)
 - [Neovim](https://neovim.io "Configuration now supports regular vi") and [vim-plug](https://github.com/junegunn/vim-plug "Plugin manager for Neovim") (apt)
 - [NVM](https://github.com/nvm-sh/nvm) (curl script)
 - [Steam](https://store.steampowered.com) (apt)
-- ~~[Tilix](https://gnunn1.github.io/tilix-web/ "Switched to using Kitty as my terminal emulator") (apt)~~
 - [Tmux](https://tmux.github.io/) (apt)
 - [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks) (apt)
 - [Zsh](http://zsh.sourceforge.net) and [Oh My Zsh](https://ohmyz.sh/ "Plugin manager for zsh") (apt)
