@@ -10,7 +10,6 @@ MANAGER_INSTALL="apt install"
 DEB_INSTALL="dpkg -i"
 
 read -p 'Update packages? (Y/n) ' updatepackages
-read -p 'Install Brave Browser? (Y/n) ' installbrave
 read -p 'Install Discord? (Y/n) ' installdiscord
 read -p 'Install Kitty? (Y/n) ' installkitty
 read -p 'Install Modern Unix scripts? (Y/n) ' installmu
@@ -19,7 +18,6 @@ read -p 'Install Vim/Neovim? (Y/n) ' installvimnvim
 read -p 'Install NVM? (Y/n) ' installnode
 read -p 'Install Steam? (Y/n) ' installsteam
 read -p 'Install Tmux? (Y/n) ' installtmux
-# read -p 'Install Tilix? (Y/n) ' installtilix
 read -p 'Install GNOME Tweaks? (Y/n) ' installtweaks
 read -p 'Install zsh? (Y/n) ' installzsh
 
@@ -28,18 +26,6 @@ if [[ $updatepackages == 'Y' || $updatepackages == 'y' ]]; then
 	$UPDATE_PACKAGES
 else
 	echo 'Skipping updating packages...'
-fi
-
-# Brave Browser
-if [[ $installbrave == 'Y' || $installbrave == 'y' ]]; then
-	echo 'Installing Brave Browser...'
-	sudo apt install apt-transport-https curl
-	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-	sudo apt update
-	sudo ${MANAGER_INSTALL} brave-browser -y
-else
-	echo 'Skipping Brave Browser install.'
 fi
 
 # Discord
@@ -154,15 +140,6 @@ if [[ $installtmux == 'Y' || $installtmux == 'y' ]]; then
 	bash ./scripts/tmux.sh
 else
 	echo 'Skipping Tmux install...'
-fi
-
-# Tilix
-if [[ $installtilix == 'Y' || $installtilix == 'y' ]]; then
-	echo 'Installing Tilix...'
-	sudo ${MANAGER_INSTALL} tilix -y
-	sudo update-alternatives --config x-terminal-emulator
-else
-	echo 'Skipping Tilix install.'
 fi
 
 # GNOME Tweaks
