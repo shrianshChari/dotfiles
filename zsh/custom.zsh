@@ -21,6 +21,10 @@ if [[ -d ~/anaconda3/bin ]]
 then
 	export PATH=$PATH:~/anaconda3/bin
 fi
+if [[ -d ~/miniconda3/bin ]]
+then
+	export PATH=$PATH:/home/tbolt/miniconda3/bin:/home/tbolt/miniconda3/condabin
+fi
 
 # Flutter
 if [[ -d ~/flutter/bin ]]
